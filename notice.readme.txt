@@ -1,0 +1,39 @@
+## Seed Examples
+
+php artisan make:seeder UserSeeder
+
+
+## Migration
+
+php artisan make:migration create_languages_table
+php artisan make:migration create_static_page_localization
+php artisan make:migration UpdateMembersInvestmentSummaryAddField --table=members_investment_summary
+
+
+
+
+
+php artisan migrate:rollback
+php artisan migrate:rollback --step=5
+
+// The migrate:refresh command will roll back all of your migrations and then execute the migrate command. This command effectively re-creates your entire database:
+
+// Refresh the database and run all database seeds...
+php artisan migrate:refresh
+php artisan migrate:refresh --seed
+
+
+php artisan optimize:clear
+
+
+=====
+NEED TO BE DONE
+
+php artisan migrate
+
+php artisan db:seed --class=MemberAccountSummaryAssignUserDateToStartDateField
+
+
+=====
+
+ php artisan queue:work --queue=emails

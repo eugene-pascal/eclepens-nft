@@ -213,7 +213,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Auth' => \App\Facades\Auth::class,
-        'SudoApi' => \App\Facades\SudoApi::class,
 
         'Widget'       => Arrilot\Widgets\Facade::class,
         'AsyncWidget'  => Arrilot\Widgets\AsyncFacade::class,

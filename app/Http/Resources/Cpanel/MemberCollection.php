@@ -28,13 +28,6 @@ class MemberCollection extends JsonResource
             'updated_at' => $this->updated_at
         ];
 
-        if ('member' === $this->type_account && $this->partnerConnection()->count()) {
-            $response['partner_conn'] = $this->partnerConnection()->first();
-        }
-        if ('partner' === $this->type_account && $this->memberConnection()->count()) {
-            $response['members_not_approved_cc'] = $this->memberConnection()->where('approved', false)->count();
-        }
-
         return $response;
     }
 }

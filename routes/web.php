@@ -49,20 +49,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'cpanel'], function() {
         Route::get('{page}/descendants', 'StaticPageController@descendants')->name('page.descendants');
     });
 
-    Route::group(['prefix' => 'attribute', 'namespace' => 'Cpanel'], function () {
-        Route::get('list', 'AttributeController@list')->name('attributes.list');
-        Route::get('add', 'AttributeController@add')->name('attribute.add');
-    });
-
-    Route::group(['prefix' => 'statistic', 'namespace' => 'Cpanel'], function () {
-        Route::get('api/profits/list', 'StatisticController@apiProfitsList')->name('statistic.api.profits.list');
-        Route::post('api/profits/chart/{member}/{date_range?}', 'StatisticController@apiProfitsChartForMember')->name('member.api.profits.chart');
-        Route::post('api/profits/chart-pie/{member}/{date_range?}', 'StatisticController@apiProfitsChartPieForMember')->name('member.api.profits.chart.pie');
-        Route::post('api/profits/chart-column/{member}/{date_range?}', 'StatisticController@apiProfitsChartColumnForMember')->name('member.api.profits.chart.column');
-        Route::post('api/profits/chart-bar/{member}/{type}/{date_range?}', 'StatisticController@apiProfitsChartBarForMember')->name('member.api.profits.chart.bar');
-        Route::post('ktdatatable/api/profits/list', 'StatisticController@apiProfitsListKTDatatable')->name('ktdatatable.statistic.api.profits.list');
-    });
-
     Route::group(['prefix' => 'settings', 'namespace' => 'Cpanel'], function () {
         Route::get('languages', 'LanguagesController@list')->name('settings.languages');
         Route::get('language/add', 'LanguagesController@add')->name('settings.language.add');
@@ -98,14 +84,24 @@ Route::group(['middleware' => 'auth', 'prefix' => 'cpanel'], function() {
         Route::put('{member}/investment/{id}', 'MembersController@updateInvestmentRow');
     });
 
-
-    Route::group(['prefix' => 'finalsedo', 'namespace' => 'Cpanel'], function () {
-        Route::get('credentials/list', 'FinalSedoController@credentialsList')->name('finalsedo.credentials.list');
-        Route::get('credential/add', 'FinalSedoController@credentialAdd')->name('finalsedo.credential.add');
-        Route::post('credential/add', 'FinalSedoController@credentialCreate');
-        Route::get('credential/{credential}', 'FinalSedoController@credentialEdit')->name('finalsedo.credential.edit');
-        Route::put('credential/{credential}', 'FinalSedoController@credentialUpdate');
-        Route::delete('credential/{credential}', 'FinalSedoController@credentialDelete');
-        Route::post('ktdatatable/credentials/list', 'FinalSedoController@credentialsListKTDatatable')->name('ktdatatable.finalsedo.credentials.list');
+    Route::group(['prefix' => 'content', 'namespace' => 'Cpanel'], function () {
+        Route::get('articles/list', 'ArticlesController@list')->name('content.articles.list');
+        Route::get('article/add', 'ArticlesController@add')->name('content.article.add');
+        Route::post('article/add', 'ArticlesController@create');
+        Route::get('article/{credential}', 'ArticlesController@edit')->name('content.article.edit');
+        Route::put('article/{credential}', 'ArticlesController@update');
+        Route::delete('article/{credential}', 'ArticlesController@delete');
+        Route::post('ktdatatable/articles/list', 'ArticlesController@listKTDatatable')->name('ktdatatable.content.articles.list');
     });
+
+
+//    Route::group(['prefix' => 'finalsedo', 'namespace' => 'Cpanel'], function () {
+//        Route::get('credentials/list', 'FinalSedoController@credentialsList')->name('finalsedo.credentials.list');
+//        Route::get('credential/add', 'FinalSedoController@credentialAdd')->name('finalsedo.credential.add');
+//        Route::post('credential/add', 'FinalSedoController@credentialCreate');
+//        Route::get('credential/{credential}', 'FinalSedoController@credentialEdit')->name('finalsedo.credential.edit');
+//        Route::put('credential/{credential}', 'FinalSedoController@credentialUpdate');
+//        Route::delete('credential/{credential}', 'FinalSedoController@credentialDelete');
+//        Route::post('ktdatatable/credentials/list', 'FinalSedoController@credentialsListKTDatatable')->name('ktdatatable.finalsedo.credentials.list');
+//    });
 });

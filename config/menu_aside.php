@@ -12,29 +12,6 @@ return [
             'new-tab' => false,
         ],
 
-        // Partner
-        [
-            'title' => 'Clients',
-            'icon' => 'media/svg/icons/Communication/Add-user.svg',
-            'bullet' => 'dot',
-            'root' => true,
-            'permissions' => ['partner'],
-            'submenu' => [
-                [
-                    'title' => 'Add a new client',
-                    'bullet' => 'dot',
-                    'page' => 'partner.add.member',
-                    'permissions' => ['partner'],
-                ],
-                [
-                    'title' => 'The list of your clients',
-                    'bullet' => 'dot',
-                    'page' => 'partner.list.members',
-                    'permissions' => ['partner'],
-                ],
-            ]
-        ],
-
         // Users
         [
             'section' => 'Users',
@@ -48,7 +25,7 @@ return [
             'permissions' => ['admin'],
             'submenu' => [
                 [
-                    'title' => 'The list of members',
+                    'title' => ' List of members',
                     'bullet' => 'dot',
                     'page' => 'members.list',
                 ],
@@ -82,13 +59,13 @@ return [
             ]
         ],
 
-        // Stats
+        // Contents
         [
-            'section' => 'Finalsedo',
+            'section' => 'Content',
             'permissions' => ['admin']
         ],
         [
-            'title' => 'Accounts credentials',
+            'title' => 'Articles',
             'desc' => '',
             'icon' => 'media/svg/icons/Code/Compiling.svg',
             'bullet' => 'dot',
@@ -96,9 +73,9 @@ return [
             'permissions' => ['admin'],
             'submenu' => [
                 [
-                    'title' => 'The list of accounts',
+                    'title' => 'List of articles',
                     'bullet' => 'dot',
-                    'page' => 'finalsedo.credentials.list',
+                    'page' => 'content.articles.list',
                     'permissions' => ['admin'],
                 ]
             ]
@@ -121,12 +98,6 @@ return [
                     'page' => 'settings.languages',
                     'permissions' => ['admin'],
                 ],
-//                [
-//                    'title' => 'Common',
-//                    'bullet' => 'dot',
-//                    'page' => '#',
-//                    'permissions' => ['member'],
-//                ],
             ]
         ],
         [
@@ -142,12 +113,7 @@ return [
                     'page' => 'employees.list',
                     'permissions' => ['admin'],
                 ],
-//                [
-//                    'title' => 'My Account',
-//                    'bullet' => 'dot',
-//                    'page' => '#',
-//                    'permissions' => ['member'],
-//                ],
+
             ]
         ]
     ]

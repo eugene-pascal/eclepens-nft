@@ -24,6 +24,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('sudo_api_class', 'App\Classes\Sudo\BasicApi');
     }
 }

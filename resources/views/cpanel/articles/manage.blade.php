@@ -1,7 +1,7 @@
 @extends('layout.default')
-@inject('constant', 'App\Enums\ArticleTypes')
+@inject('articleTypes', 'App\Enums\ArticleTypes')
 @php
-    $title = !empty($article) ? __('Manage the article id: {id}', ['id'=>$article->id]) : __('Add a new article');
+    $title = !empty($article) ? __("Manage the article id: {id}", ['id'=>$article->id]) : __('Add a new article');
     $page_breadcrumbs = [
             [
                 'page'=> route('content.articles.list'),
@@ -24,19 +24,113 @@
 
         <div class="card-body">
             <div class="tab-content pt-5">
-                @if (!empty($langs))
-                    @if (empty($page))
-                        <div class="tab-pane active">
-                            @include('cpanel.static._page_form', ['currLang'=>$langs[0]])
-                        </div>
-                    @else
-                        @foreach($langs as $indx=>$lang)
-                            <div class="tab-pane{{ 0 == $indx ? ' active' : '' }}" id="lang_{{$lang->lang_code}}" role="tabpanel">
-                                @include('cpanel.static._page_form', ['currLang'=>$lang, 'local'=> $page->staticPageLocalization()->where('language_id',$lang->id)->first()] )
-                            </div>
-                        @endforeach
+                <form class="static-page-form" method="POST" action="{{ empty($article) ? route('content.article.add') : route('content.article.edit', ['article' => $article->id]) }}" id="static-form">
+                    @csrf
+                    @if(!empty($article))
+                        @method('PUT')
                     @endif
-                @endif
+
+                    @include('pages.widgets._alert_both_success_error', [])
+
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label" for="name" class="required">{{ __('Title')}} <i class="text-danger">*</i></label>
+                        <div class="col-10">
+                            <input type="text" class="form-control" name="title" value="{{old('title', $article->title ?? '')}}"  placeholder=""/>
+                            @if($errors->has('title'))
+                                <div class="error text-danger font-size-sm">{{ $errors->first('title') }}</div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label" for="header" class="required">{{ __('Code unique') }} <i class="text-danger">*</i></label>
+                        <div class="col-4">
+                            <input type="text" maxlength="32" class="form-control" name="code_unique" value="{{old('code_unique', $article->code_unique ?? '')}}" placeholder=""/>
+                            @if($errors->has('code_unique'))
+                                <div class="error text-danger font-size-sm">{{ $errors->first('code_unique') }}</div>
+                            @endif
+                        </div>
+                        <label class="col-2 col-form-label" for="header" class="required">{{ __('Code name') }} <i class="text-danger">*</i></label>
+                        <div class="col-4">
+                            <input type="text" maxlength="8" class="form-control" name="code_name" value="{{old('code_name', $article->code_name ?? '')}}" placeholder=""/>
+                            @if($errors->has('code_name'))
+                                <div class="error text-danger font-size-sm">{{ $errors->first('code_name') }}</div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label" for="header" class="required">{{ __('Alias') }} <i class="text-danger">*</i></label>
+                        <div class="col-10">
+                            <input type="text" class="form-control" name="slug" value="{{old('slug', $article->slug ?? '')}}" placeholder=""/>
+                            @if($errors->has('slug'))
+                                <div class="error text-danger font-size-sm">{{ $errors->first('slug') }}</div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label" for="type">{{ __('Language') }}</label>
+                        <div class="col-10">
+                            <select class="form-control" name="code_lang2" id="type">
+                                @foreach($articleTypes::langList() as $option => $optionName)
+                                    <option {{ old('code_lang2', $article->code_lang2 ?? __('Choose page language')) === $option ? 'selected' : '' }} value="{{ $option }}">{{ $optionName }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label" for="text">{{  __('Text') }} <i class="text-danger">*</i></label>
+                        <div class="col-10">
+                            <textarea id="textTineMCE" class="text-tine-MCE" name="text">{{old('text', $article->text ?? '')}}</textarea>
+                            @if($errors->has('text'))
+                                <div class="error text-danger font-size-sm">{{ $errors->first('text') }}</div>
+                            @endif
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label"></label>
+                        <div class="col-10 col-form-label">
+                            <div class="checkbox-list">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="display" value="1" {{ old('display', $article->display ?? true) ? 'checked' : '' }}/>
+                                    <span></span>
+                                    @lang('Display')
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="separator separator-dashed my-8"></div>
+
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label" for="title">{{ __('Meta title') }}</label>
+                        <div class="col-10">
+                            <input type="text" class="form-control" name="meta_title" value="{{old('meta_title', $article->meta_title ?? '')}}" placeholder=""/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label" for="keywords">{{ __('Keywords') }}</label>
+                        <div class="col-10">
+                            <input type="text" class="form-control" name="meta_keywords" value="{{old('meta_keywords', $article->meta_keywords ?? '')}}" placeholder=""/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label" for="text">{{ __('Description') }}</label>
+                        <div class="col-10">
+                            <textarea class="form-control" name="meta_description">{{old('meta_description', $article->meta_description ?? '')}}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn width-200 btn-primary">{{ __('Update') }}</button>
+                        @if(!empty($article))
+                            <button type="reset" class="btn btn-default">{{ __('Cancel') }}</button>
+                        @endif
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -172,85 +266,9 @@
             let _keepObject = null;
             const handleActions = function() {
                 const ajaxRequest = function (postData, url, _method="POST") {
-                    if (typeof postData['_token'] === 'undefined') {
-                        postData["_token"] = "<?php echo e(csrf_token()); ?>";
-                    }
-                    $.ajax({
-                        url: url,
-                        data: postData,
-                        success: ajaxSuccess,
-                        dataType: "json",
-                        type: _method,
-                        error: function(data) {
-                            const response = data.responseJSON;
-                            if (typeof response.errors !== 'undefined' && typeof response.errors !== 'undefined') {
-                                let _errorMessage = '';
-                                for (let key in response.errors) {
-                                    _errorMessage = response.errors[key][0];
-                                }
-                                $.notify({
-                                    title: '<strong>' + response.message + '</strong>',
-                                    message: '<strong>' + _errorMessage + '</strong>'
-                                }, {
-                                    type:  'danger'
-                                });
-                            } else {
-                                $.notify({
-                                    title: '<strong>Error:</strong>',
-                                    message: 'An error occurred'
-                                }, {
-                                    type: 'warning'
-                                })
-                            }
-                            _keepObject.find('input[type=text]').attr('disabled',false);
-                            _keepObject.find('textarea').attr('disabled',false);
-                            _keepObject.find('button[type=submit]')
-                                .attr('disabled',false)
-                                .removeClass('spinner spinner-white spinner-right pr-15 disabled')
-                                .html('Save');
-                        }
-                    });
                 };
                 const ajaxSuccess = function (response) {
-                    if (typeof response.status !== 'undefined' && response.status === 'success' && typeof response.page_id !== 'undefined') {
-                        if (typeof response.action !== 'undefined' && response.action === 'update') {
-                            $.notify({
-                                title: '<strong>Saved</strong>',
-                                message: 'Page was saved'
-                            }, {
-                                type: 'success'
-                            })
-                            _keepObject.find('input[type=text]').attr('disabled',false);
-                            _keepObject.find('textarea').attr('disabled',false);
-                            _keepObject.find('button[type=submit]')
-                                .attr('disabled',false)
-                                .removeClass('spinner spinner-white spinner-right pr-15 disabled')
-                                .html('Save');
-                        } else {
-                            let _link = '{!! route("page.edit",["page"=>':id']) !!}';
-                            _link = _link.replace(':id', response.page_id);
-                            $(location).attr('href', _link);
-                        }
-                    }
                 };
-
-                $(document).on('submit', 'form.static-page-form', function(e) {
-                    e.preventDefault();
-                    let _this = $(this);
-                    let _url = _this.attr('action');
-                    let _data = _this.serialize();
-
-                    _this.find('input[type=text]').attr('disabled',true);
-                    _this.find('textarea').attr('disabled',true);
-                    _this.find('button[type=submit]')
-                        .attr('disabled',true)
-                        .removeClass('spinner spinner-white spinner-right pr-15 disabled')
-                        .addClass('spinner spinner-white spinner-right pr-15 disabled')
-                        .html('Saving');
-
-                    _keepObject = _this;
-                    ajaxRequest(_data, _url)
-                });
             };
 
             return {

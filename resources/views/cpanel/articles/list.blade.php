@@ -71,7 +71,7 @@
 @section('scripts')
     <script src="{{ asset('theme_assets/vendors/bootstrap-sweetalert/dist/sweetalert.min.js') }}" type="text/javascript"></script>
     <script>
-        var HOST_URL = "{{ route('ktdatatable.members.list') }}";
+        var HOST_URL = "{{ route('ktdatatable.content.articles.list') }}";
         var USER_TYPE = 'user';
     </script>
 
@@ -134,30 +134,43 @@
                         selector: false,
                         textAlign: 'center',
                     }, {
-                        field: 'name',
-                        title: 'Username',
+                        field: 'title',
+                        title: 'Title',
                         width: 150,
                         template: function(row) {
-                            return '<div class="text-dark-75 font-weight-bolder d-block font-size-sm">' + row.name + '</div>\
-                            <span class="text-muted font-weight-bold text-hover-primary">' + row.fullname + '</span>';
+                            return '<div class="text-dark-75 font-weight-bolder d-block font-size-sm">' + row.title + '</div>';
                         },
                     }, {
-                        field: 'email',
-                        title: 'Email',
+                        field: 'code_lang2',
+                        title: 'Lang',
                         // visible: !1,
-                        width: 150,
+                        width: 50,
                         template: function(row) {
-                            return '<span class="text-primary font-weight-normal font-size-sm">' + row.email + '</span>';
+                            return '<span class="text-primary font-weight-normal font-size-sm">' + row.code_lang2 + '</span>';
                         },
                     }, {
                         field: 'status',
                         title: 'Status',
                         width: 75,
                         template: function(row) {
-                            if (typeof row.status !== 'undefined' && row.status == 1) {
+                            if (typeof row.display !== 'undefined' && row.display == 1) {
                                 return '<i class="fa fa-check text-success"></i>';
                             }
                             return '<i class="fa fa-times text-danger"></i>';
+                        },
+                    },{
+                        field: 'code_unique',
+                        title: 'code unique',
+                        width: 150,
+                        template: function(row) {
+                            return '<span class="text-dark font-weight-normal font-size-sm">' + row.code_unique + '</span>';
+                        },
+                    },{
+                        field: 'code_name',
+                        title: 'code name',
+                        width: 75,
+                        template: function(row) {
+                            return '<span class="text-dark font-weight-normal font-size-sm">' + row.code_name + '</span>';
                         },
                     }, {
                         field: 'created_at',
@@ -182,7 +195,7 @@
                         overflow: 'visible',
                         autoHide: false,
                         template: function(row) {
-                            var _link = '{!! route("member.profile",["member"=>':id']) !!}';
+                            var _link = '{!! route("content.article.edit",["article"=>':id']) !!}';
                             _link = _link.replace(':id', row.id);
                             return '\
                                 <a href="'+ _link +'" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">\

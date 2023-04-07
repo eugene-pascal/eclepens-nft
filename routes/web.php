@@ -88,10 +88,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'cpanel'], function() {
         Route::get('articles/list', 'ArticlesController@list')->name('content.articles.list');
         Route::get('article/add', 'ArticlesController@add')->name('content.article.add');
         Route::post('article/add', 'ArticlesController@create');
-        Route::get('article/{credential}', 'ArticlesController@edit')->name('content.article.edit');
-        Route::put('article/{credential}', 'ArticlesController@update');
-        Route::delete('article/{credential}', 'ArticlesController@delete');
-        Route::post('ktdatatable/articles/list', 'ArticlesController@listKTDatatable')->name('ktdatatable.content.articles.list');
+        Route::get('article/{article}', 'ArticlesController@edit')->name('content.article.edit');
+        Route::put('article/{article}', 'ArticlesController@update');
+        Route::delete('article/{article}', 'ArticlesController@delete');
+        Route::post('ktdatatable/articles/list', 'ArticlesController@listForKTDatatable')->name('ktdatatable.content.articles.list');
     });
 
 

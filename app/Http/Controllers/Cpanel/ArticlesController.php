@@ -94,10 +94,22 @@ class ArticlesController extends Controller
         $query = Article::orderBy('id','DESC');
 
         if (!empty($queryData)) {
+            if (isset($queryData['display'])&&is_numeric($queryData['display'])) {
+                if (0 == $queryData['display']) {
+                    $query
+                        ->where('display','0');
+                }
+                elseif (1 == $queryData['display']) {
+                    $query
+                        ->where('display','1');
+                }
+            }
             if (!empty($queryData['query_search'])) {
                 $query
                     ->where(function ($query) use ($queryData) {
-                        $query->where('title', 'like', '%'.trim($queryData['query_search']).'%');
+                        $query->where('title', 'like', '%'.trim($queryData['query_search']).'%')
+                            ->orWhere('code_unique', 'like', '%'.trim($queryData['query_search']).'%')
+                            ->orWhere('code_name', 'like', '%'.trim($queryData['query_search']).'%');
                     });
             }
         }

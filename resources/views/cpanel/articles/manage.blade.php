@@ -1,7 +1,7 @@
 @extends('layout.default')
 @inject('articleTypes', 'App\Enums\ArticleTypes')
 @php
-    $title = !empty($article) ? __("Manage the article id: {id}", ['id'=>$article->id]) : __('Add a new article');
+    $title = !empty($article) ? __("Manage the article id: :id", ['id'=>$article->id]) : __('Add a new article');
     $page_breadcrumbs = [
             [
                 'page'=> route('content.articles.list'),

@@ -228,14 +228,14 @@
                 var datatable = $('#kt_datatable').KTDatatable(dtConfig);
 
                 $('#kt_datatable_search_status').on('change', function() {
-                    datatable.search($(this).val().toLowerCase(), 'verified');
+                    datatable.search($(this).val().toLowerCase(), 'display');
                 });
 
                 datatable.on('datatable-on-init', function (event,options) {
                     // event on init datatable
                 });
 
-                $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+                $('#kt_datatable_search_status').selectpicker();
             };
 
             return {

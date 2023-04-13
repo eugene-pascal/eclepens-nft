@@ -57,6 +57,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'cpanel'], function() {
         Route::get('languages/{lang}', 'LanguagesController@edit')->name('settings.language.edit');
         Route::put('languages/{lang}', 'LanguagesController@update');
         Route::delete('languages/{lang}', 'LanguagesController@delete')->name('settings.language.delete');
+
+        Route::get('sites', 'SitesController@list')->name('settings.sites');
+        Route::get('site/add', 'SitesController@add')->name('settings.site.add');
+        Route::post('site/add', 'SitesController@create')->name('settings.site.create');
+        Route::get('sites/{site}', 'SitesController@edit')->name('settings.site.edit');
+        Route::put('sites/{site}', 'SitesController@update');
+        Route::delete('sites/{site}', 'SitesController@delete');
+        Route::post('ktdatatable/sites/list', 'SitesController@listForKTDatatable')->name('ktdatatable.settings.sites.list');
     });
 
     Route::group(['prefix' => 'employees',  'namespace' => 'Cpanel'], function () {

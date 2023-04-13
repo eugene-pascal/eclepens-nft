@@ -98,7 +98,13 @@ return [
                     'page' => 'settings.languages',
                     'permissions' => ['admin'],
                 ],
-            ]
+                [
+                    'title' => 'Sites',
+                    'bullet' => 'dot',
+                    'page' => 'settings.sites',
+                    'permissions' => ['admin'],
+                ],
+            ],
         ],
         [
             'title' => 'Accounts',

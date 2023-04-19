@@ -100,6 +100,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'cpanel'], function() {
         Route::put('article/{article}', 'ArticlesController@update');
         Route::delete('article/{article}', 'ArticlesController@delete');
         Route::post('ktdatatable/articles/list', 'ArticlesController@listForKTDatatable')->name('ktdatatable.content.articles.list');
+        Route::post('article/upload-media/{article}', 'ArticlesController@uploadMedia')->name('content.article.upload.media');
+        Route::delete('article/{article}/media/{media}', 'ArticlesController@deleteMedia')->name('content.article.delete.media');
     });
 
 

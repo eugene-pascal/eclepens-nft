@@ -8,8 +8,10 @@ use App\Http\Requests\Cpanel\Articles\Request;
 use App\Http\Requests\Cpanel\KDTableRequest;
 use App\Http\Resources\Cpanel\ArticleCollection;
 use App\Http\Resources\Cpanel\KDTablePaginationCollection;
+use App\Http\Resources\Cpanel\MediaCollection;
 use App\Models\Article;
 use Illuminate\Support\Facades\Schema;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ArticlesController extends Controller
 {
@@ -146,5 +148,32 @@ class ArticlesController extends Controller
         ]);
     }
 
+
+    /**
+     * Uploads the medias
+     */
+    public function uploadMedia(Article $article, Request $request)
+    {
+        if (!\Auth::user()->isAdmin()) {
+            return ['status'=>'error', 'message'=>'no access permitted'];
+        }
+        $result = [];
+        if ($request->hasFile('file')) {
+            $result = $article->addMediaFromRequest('file')->toMediaCollection('images');
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'result' => $result
+        ]);
+    }
+
+    public function deleteMedia(Article $article, Media $media, Request $request)
+    {
+        $media->delete();
+        return [
+            'status' => 'success'
+        ];
+    }
 
 }

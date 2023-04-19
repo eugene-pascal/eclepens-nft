@@ -137,7 +137,7 @@
                                                     <img src="{{ $media->getUrl('thumb300x300') }}" alt="" class="mw-100 w-200px" />
                                                 </div>
                                                 <div class="overlay-layer">
-                                                    <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
+                                                    <a href="{{ $media->getUrl() }}" class="image-copy-link btn font-weight-bolder btn-sm btn-primary mr-2">Copy link</a>
                                                     <a href="{{ route('content.article.delete.media', ['article' => $article->id, 'media'=>$media->id])  }}" class="image-remove-link btn font-weight-bolder btn-sm btn-light-primary">Delete</a>
                                                 </div>
                                             </div>
@@ -331,7 +331,7 @@
 
                         $('<div/>',{
                             class: 'overlay-layer',
-                            html: '<a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>'+
+                            html: '<a href="'+ data.original_url +'" class="image-copy-link btn font-weight-bolder btn-sm btn-primary mr-2">Copy link</a>'+
                                   '<a href="'+ _link_del +'" class="image-remove-link btn font-weight-bolder btn-sm btn-light-primary">Delete</a>'
                         }).appendTo(divOverlay);
 
@@ -344,6 +344,15 @@
             } // init end
         });
         jQuery(document).ready(function() {
+            $(document).on('click', 'a.image-copy-link', function(event) {
+                event.preventDefault();
+                let url = $(this).attr('href');
+                let temp = $("<input>");
+                $("body").append(temp);
+                temp.val(url).select();
+                document.execCommand("copy");
+                temp.remove();
+            });
             $(document).on('click', 'a.image-remove-link', function(event) {
                 event.preventDefault();
                 if (confirm("Are you sure to remove this image?")) {

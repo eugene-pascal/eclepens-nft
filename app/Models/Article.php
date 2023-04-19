@@ -12,6 +12,8 @@ class Article extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
+    const _MEDIA_COLLECTION_NAME = 'article';
+
     /**
      * The attributes that are mass assignable.
      *

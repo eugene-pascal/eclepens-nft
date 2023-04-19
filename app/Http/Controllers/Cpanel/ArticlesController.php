@@ -159,7 +159,7 @@ class ArticlesController extends Controller
         }
         $result = [];
         if ($request->hasFile('file')) {
-            $result = $article->addMediaFromRequest('file')->toMediaCollection('images');
+            $result = $article->addMediaFromRequest('file')->toMediaCollection(Article::_MEDIA_COLLECTION_NAME);
         }
 
         return response()->json([

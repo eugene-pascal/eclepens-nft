@@ -126,33 +126,33 @@
 
                     @if (!empty($article))
                         <div class="separator separator-dashed my-8"></div>
-                        @if($article->getMedia('images')->count()>0)
-                            <div id="image_container" class="form-group row">
-                            @foreach($article->getMedia('images') as $media)
-                                <div class="block-image col-md-4 col-xxl-3 col-lg-3">
-                                    <div class="card-body p-0">
-                                        <!--begin::Image-->
-                                        <div class="overlay">
-                                            <div class="overlay-wrapper rounded bg-light text-center">
-                                                <img src="{{ $media->getUrl('thumb300x300') }}" alt="" class="mw-100 w-200px" />
+                        <div id="image_container" class="form-group row">
+                            @if($article->getMedia(\App\Models\Article::_MEDIA_COLLECTION_NAME)->count()>0)
+                                @foreach($article->getMedia(\App\Models\Article::_MEDIA_COLLECTION_NAME) as $media)
+                                    <div class="block-image col-md-4 col-xxl-3 col-lg-3">
+                                        <div class="card-body p-0">
+                                            <!--begin::Image-->
+                                            <div class="overlay">
+                                                <div class="overlay-wrapper rounded bg-light text-center">
+                                                    <img src="{{ $media->getUrl('thumb300x300') }}" alt="" class="mw-100 w-200px" />
+                                                </div>
+                                                <div class="overlay-layer">
+                                                    <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
+                                                    <a href="{{ route('content.article.delete.media', ['article' => $article->id, 'media'=>$media->id])  }}" class="image-remove-link btn font-weight-bolder btn-sm btn-light-primary">Delete</a>
+                                                </div>
                                             </div>
-                                            <div class="overlay-layer">
-                                                <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
-                                                <a href="{{ route('content.article.delete.media', ['article' => $article->id, 'media'=>$media->id])  }}" class="image-remove-link btn font-weight-bolder btn-sm btn-light-primary">Delete</a>
+                                            <!--end::Image-->
+                                            <!--begin::Details-->
+                                            <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
+                                                <span class="font-size-lg">{{ $media->name }}</span>
                                             </div>
+                                            <!--end::Details-->
                                         </div>
-                                        <!--end::Image-->
-                                        <!--begin::Details-->
-                                        <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
-                                            <span class="font-size-lg">{{ $media->name }}</span>
-                                        </div>
-                                        <!--end::Details-->
                                     </div>
-                                </div>
-                            @endforeach
-                            </div>
-                            <div class="separator separator-dashed my-8"></div>
-                        @endif
+                                @endforeach
+                            @endif
+                        </div>
+                        <div class="separator separator-dashed my-8"></div>
                         <div class="form-group row">
                             <label class="col-form-label col-lg-3 col-sm-12 text-lg-right">File Type Validation</label>
                             <div class="col-lg-4 col-md-9 col-sm-12">

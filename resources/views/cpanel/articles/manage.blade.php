@@ -89,7 +89,6 @@
                         </div>
                     </div>
 
-
                     <div class="form-group row">
                         <label class="col-2 col-form-label"></label>
                         <div class="col-10 col-form-label">
@@ -125,6 +124,17 @@
                     </div>
 
                     @if (!empty($article))
+                        <div class="separator separator-dashed my-8"></div>
+
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">{{  __('Tags') }}</label>
+                            <div class="col-10">
+                                <input id="kt_tagify" type="text"  class="form-control tagify" name="tags_names" placeholder="type..." value="{{ $article->allTagsIntoStr() }}" autofocus="" data-blacklist="" />
+                                <div class="mt-3">
+                                    <a href="javascript:;" id="kt_tagify_remove" class="btn btn-sm btn-light-primary font-weight-bold">{{  __('Remove tags') }}</a>
+                                </div>
+                            </div>
+                        </div>
                         <div class="separator separator-dashed my-8"></div>
                         <div id="image_container" class="form-group row">
                             @if($article->getMedia(\App\Models\Article::_MEDIA_COLLECTION_NAME)->count()>0)
@@ -380,4 +390,13 @@
         });
     </script>
     @endif
+
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script>
+        jQuery(document).ready(function() {
+            const input = document.getElementById('kt_tagify');
+            let tagify = new Tagify(input);
+            document.getElementById('kt_tagify_remove').addEventListener('click', tagify.removeAllTags.bind(tagify));
+        });
+    </script>
 @endsection

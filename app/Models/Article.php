@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Image\Manipulations;
@@ -40,6 +41,11 @@ class Article extends Model implements HasMedia
         'display' => 'boolean',
     ];
 
+    /**
+     * @param Media|null $media
+     * @return void
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     */
     public function registerMediaConversions(Media $media = null): void
     {
         $this
@@ -48,4 +54,35 @@ class Article extends Model implements HasMedia
             ->nonQueued();
     }
 
+    /**
+     * Get all of the tags for the article
+     *
+     * @return MorphToMany
+     */
+    public function tags(): MorphToMany
+    {
+        return $this->morphToMany(Tag::class, 'taggable', 'terms_taggable',null,'term_id');
+    }
+
+    /**
+     * Get all tags into one string to be seperated with $separator
+     *
+     * @param string $separator
+     * @return string
+     */
+    public function allTagsIntoStr(string $separator = ','): string
+    {
+        $arr = $this->tags()->pluck('name')->all();
+        return implode($arr, $separator);
+    }
+
+    /**
+     * @return void
+     */
+    public function deleteWithRelations(): void {
+        $this->tags()->detach();
+        $this->delete();
+        // remove all detached tags (which are no connection)
+        Tag::doesntHave('articles')->delete();
+    }
 }

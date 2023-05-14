@@ -10,7 +10,10 @@ use App\Http\Resources\Cpanel\ArticleCollection;
 use App\Http\Resources\Cpanel\KDTablePaginationCollection;
 use App\Http\Resources\Cpanel\MediaCollection;
 use App\Models\Article;
+use App\Models\Tag;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ArticlesController extends Controller
@@ -62,11 +65,38 @@ class ArticlesController extends Controller
 
 
     /**
-     * Update article
+     * Update an article
      */
     public function update(Article $article, EditRequest $request)
     {
         $postData = $request->all();
+        $tagsArr = json_decode($request->input('tags_names','[]'), true);
+        $tagsArr = !empty($tagsArr) ? Arr::flatten($tagsArr) : [] ;
+        $slugsArr = array_map(function($value) {
+                return Str::slug($value,'-');
+            }, $tagsArr);
+
+        if (!empty($tagsArr)) {
+            $detachedIds = Arr::pluck($article->tags()->select('id')->whereNotIn('slug',$slugsArr)->get()->toArray(),'id');
+            $article->tags()->detach($detachedIds);
+            // remove all tags empty
+            Tag::doesntHave('articles')->delete();
+            $attachedSlugs = Arr::pluck($article->tags()->select('slug')->whereIn('slug',$slugsArr)->get()->toArray(),'slug');
+            foreach ($tagsArr as $tagName) {
+                $slugName = Str::slug($tagName,'-');
+                if (in_array($slugName,$attachedSlugs)) {
+                    continue;
+                }
+                $tag = Tag::query()->where('slug','=', $slugName)->first();
+                if ($tag) {
+                    $article->tags()->attach($tag->id);
+                } else {
+                    $tag = new Tag(['name' => $tagName]);
+                    $article->tags()->save($tag);
+                }
+            }
+        }
+
         if (!isset($postData['display'])) {
             $postData['display'] = 0;
         }
@@ -134,14 +164,14 @@ class ArticlesController extends Controller
     }
 
     /**
-     * Delete article
+     * Delete an article
      */
     public function delete(Article $article, Request $request)
     {
         if (!\Auth::user()->isAdmin()) {
             return ['status'=>'error', 'message'=>'no access permitted'];
         }
-        $article->delete();
+        $article->deleteWithRelations();
         return response()->json([
             'status' => 'success',
             'message' => 'Member account has been deleted.'
@@ -168,6 +198,9 @@ class ArticlesController extends Controller
         ]);
     }
 
+    /**
+     * Delete the media
+     */
     public function deleteMedia(Article $article, Media $media, Request $request)
     {
         $media->delete();

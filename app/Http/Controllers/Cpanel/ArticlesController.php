@@ -57,7 +57,9 @@ class ArticlesController extends Controller
             }, $postData);
 
         $model = new Article($postData);
-        $model->save();
+        if ($model->save()) {
+            $this->_tagsUpdate($model, $request);
+        }
 
         return redirect()->route('content.articles.list')
             ->with(['success' => __('Successfully added')]);
@@ -70,33 +72,6 @@ class ArticlesController extends Controller
     public function update(Article $article, EditRequest $request)
     {
         $postData = $request->all();
-        $tagsArr = json_decode($request->input('tags_names','[]'), true);
-        $tagsArr = !empty($tagsArr) ? Arr::flatten($tagsArr) : [] ;
-        $slugsArr = array_map(function($value) {
-                return Str::slug($value,'-');
-            }, $tagsArr);
-
-        if (!empty($tagsArr)) {
-            $detachedIds = Arr::pluck($article->tags()->select('id')->whereNotIn('slug',$slugsArr)->get()->toArray(),'id');
-            $article->tags()->detach($detachedIds);
-            // remove all tags empty
-            Tag::doesntHave('articles')->delete();
-            $attachedSlugs = Arr::pluck($article->tags()->select('slug')->whereIn('slug',$slugsArr)->get()->toArray(),'slug');
-            foreach ($tagsArr as $tagName) {
-                $slugName = Str::slug($tagName,'-');
-                if (in_array($slugName,$attachedSlugs)) {
-                    continue;
-                }
-                $tag = Tag::query()->where('slug','=', $slugName)->first();
-                if ($tag) {
-                    $article->tags()->attach($tag->id);
-                } else {
-                    $tag = new Tag(['name' => $tagName]);
-                    $article->tags()->save($tag);
-                }
-            }
-        }
-
         if (!isset($postData['display'])) {
             $postData['display'] = 0;
         }
@@ -105,6 +80,7 @@ class ArticlesController extends Controller
             }, $postData);
         $article->fill($postData);
         $article->save();
+        $this->_tagsUpdate($article, $request);
 
         return redirect()->route('content.article.edit', ['article'=>$article->id])
             ->with(['success' => __('Updated')]);
@@ -209,4 +185,43 @@ class ArticlesController extends Controller
         ];
     }
 
+    /**
+     * @param Article $article
+     * @param $request
+     * @return void
+     */
+    private function _tagsUpdate(Article $article, $request): void {
+        $tagsArr = json_decode($request->input('tags_names','[]'), true);
+        $tagsArr = !empty($tagsArr) ? Arr::flatten($tagsArr) : [] ;
+        $slugsArr = array_map(function($value) {
+            return Str::slug($value,'-');
+        }, $tagsArr);
+
+        if (!empty($tagsArr)) {
+            $detachedIds = Arr::pluck($article->tags()->select('id')->whereNotIn('slug',$slugsArr)->get()->toArray(),'id');
+            $article->tags()->detach($detachedIds);
+            // remove all tags empty
+            Tag::doesntHave('articles')->delete();
+            $attachedSlugs = Arr::pluck($article->tags()->select('slug')->whereIn('slug',$slugsArr)->get()->toArray(),'slug');
+            foreach ($tagsArr as $tagName) {
+                $slugName = Str::slug($tagName,'-');
+                if (in_array($slugName,$attachedSlugs)) {
+                    continue;
+                }
+                $tag = Tag::query()->where('slug','=', $slugName)->first();
+                if ($tag) {
+                    $article->tags()->attach($tag->id);
+                } else {
+                    $tag = new Tag(['name' => $tagName]);
+                    $article->tags()->save($tag);
+                }
+            }
+        } else
+        if ($article->exists) {
+            $detachedIds = Arr::pluck($article->tags()->select('id')->get()->toArray(),'id');
+            $article->tags()->detach($detachedIds);
+            // remove all tags empty
+            Tag::doesntHave('articles')->delete();
+        }
+    }
 }

@@ -8,9 +8,9 @@ use App\Http\Requests\Cpanel\Articles\Request;
 use App\Http\Requests\Cpanel\KDTableRequest;
 use App\Http\Resources\Cpanel\ArticleCollection;
 use App\Http\Resources\Cpanel\KDTablePaginationCollection;
-use App\Http\Resources\Cpanel\MediaCollection;
 use App\Models\Article;
 use App\Models\Tag;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
@@ -118,6 +118,18 @@ class ArticlesController extends Controller
                         $query->where('title', 'like', '%'.trim($queryData['query_search']).'%')
                             ->orWhere('code_unique', 'like', '%'.trim($queryData['query_search']).'%')
                             ->orWhere('code_name', 'like', '%'.trim($queryData['query_search']).'%');
+                    });
+            }
+            if (isset($queryData['tags'])) {
+                $tagsArr = json_decode($queryData['tags'], true);
+                $tagsArr = !empty($tagsArr) ? Arr::flatten($tagsArr) : [] ;
+                $slugsArr = array_map(function($value) {
+                    return Str::slug($value,'-');
+                }, $tagsArr);
+
+                $query
+                    ->whereHas('tags', function (Builder $query) use ($slugsArr) {
+                        $query->whereIn('slug', $slugsArr);
                     });
             }
         }

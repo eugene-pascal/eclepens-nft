@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Str;
 
 class Tag extends Model
@@ -38,7 +39,7 @@ class Tag extends Model
     /**
      * Get all of the posts that are assigned this tag.
      */
-    public function articles()
+    public function articles():MorphToMany
     {
         return $this->morphedByMany(Article::class, 'taggable', 'terms_taggable','term_id');
     }

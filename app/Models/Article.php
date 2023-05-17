@@ -55,7 +55,7 @@ class Article extends Model implements HasMedia
     }
 
     /**
-     * Get all of the tags for the article
+     * Get all tags for the article
      *
      * @return MorphToMany
      */

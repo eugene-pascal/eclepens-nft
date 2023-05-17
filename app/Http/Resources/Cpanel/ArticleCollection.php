@@ -26,7 +26,8 @@ class ArticleCollection extends JsonResource
             'display' => $this->display,
             'published_at' => $this->published_at,
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'updated_at' => $this->updated_at,
+            'tags' => TagCollection::collection($this->tags)
         ];
 
         return $response;

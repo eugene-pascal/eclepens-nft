@@ -32,7 +32,7 @@
             <!--begin::Search Form-->
             <div class="mb-7">
                 <div class="row align-items-center">
-                    <div class="col-lg-9 col-xl-8">
+                    <div class="col-lg-12 col-xl-10">
                         <div class="row align-items-center">
                             <div class="col-md-4 my-2 my-md-0">
                                 <div class="input-icon">
@@ -50,6 +50,12 @@
                                         <option value="1">@lang('Active')</option>
                                         <option value="0">@lang('Inactive')</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 my-2 my-md-0">
+                                <div class="d-flex align-items-center">
+                                    <label class="mr-3 mb-0 d-none d-md-block">@lang('Slugs'):</label>
+                                    <input id="kt_datatable_search_tags" type="text" class="form-contrl tagify" placeholder="Type tag ...." value="" autofocus="" data-blacklist="" />
                                 </div>
                             </div>
                         </div>
@@ -161,7 +167,7 @@
                     },{
                         field: 'code_unique',
                         title: 'code unique',
-                        width: 150,
+                        width: 75,
                         template: function(row) {
                             return '<span class="text-dark font-weight-normal font-size-sm">' + row.code_unique + '</span>';
                         },
@@ -171,6 +177,21 @@
                         width: 75,
                         template: function(row) {
                             return '<span class="text-dark font-weight-normal font-size-sm">' + row.code_name + '</span>';
+                        },
+                    },{
+                        field: 'tags',
+                        title: 'Tags',
+                        width: 75,
+                        template: function(row) {
+
+                            if (row.tags.length === 0) {
+                                return '';
+                            }
+                            let tagsStr = '';
+                            for(let i in row.tags) {
+                                tagsStr += '<span class="badge badge-light font-weight-normal font-size-sm">' + row.tags[i]['name'] + '</span>';
+                            }
+                            return tagsStr;
                         },
                     }, {
                         field: 'created_at',
@@ -229,6 +250,11 @@
 
                 $('#kt_datatable_search_status').on('change', function() {
                     datatable.search($(this).val().toLowerCase(), 'display');
+                });
+
+                $('#kt_datatable_search_tags').on('change', function() {
+                    datatable.search($(this).val().toLowerCase(), 'tags');
+                    console.log( $(this).val().toLowerCase() );
                 });
 
                 datatable.on('datatable-on-init', function (event,options) {
@@ -308,6 +334,14 @@
         jQuery(document).ready(function() {
             actionRemoveMember();
             KTDatatableRemoteAjax.init();
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script>
+        jQuery(document).ready(function() {
+            const input = document.getElementById('kt_datatable_search_tags');
+            let tagify = new Tagify(input);
         });
     </script>
 @endsection

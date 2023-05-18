@@ -9,6 +9,7 @@ use App\Http\Requests\Cpanel\KDTableRequest;
 use App\Http\Resources\Cpanel\ArticleCollection;
 use App\Http\Resources\Cpanel\KDTablePaginationCollection;
 use App\Models\Article;
+use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
@@ -33,7 +34,6 @@ class ArticlesController extends Controller
     {
         return view('cpanel.articles.manage');
     }
-
 
     /**
      * Show the page for editing of article
@@ -235,5 +235,50 @@ class ArticlesController extends Controller
             // remove all tags empty
             Tag::doesntHave('articles')->delete();
         }
+    }
+
+
+    /**
+     * Show the page for showing of list categories
+     */
+    public function categoriesList(Request $request)
+    {
+        return view('cpanel.articles.categories-list');
+    }
+
+    /**
+     * Show the page for adding a new category
+     */
+    public function categoryAdd(Request $request)
+    {
+        return view('cpanel.articles.category-edit');
+    }
+
+    /**
+     * Show the page for editing of category
+     */
+    public function categoryEdit(Category $category)
+    {
+        return view('cpanel.articles.category-edit', compact('category'));
+    }
+
+    /**
+     * Update a category
+     */
+    public function categoryCreate(Category $category, Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|string|max:64'
+        ]);
+
+        $postData = $request->all();
+        if (!isset($postData['is_active'])) {
+            $postData['is_active'] = 0;
+        }
+        $category->fill($postData);
+        $category->save();
+
+        return redirect()->route('content.article.category.edit', ['category'=>$category])
+            ->with(['success' => __('Updated')]);
     }
 }

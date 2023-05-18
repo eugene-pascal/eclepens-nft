@@ -77,6 +77,12 @@ return [
                     'bullet' => 'dot',
                     'page' => 'content.articles.list',
                     'permissions' => ['admin'],
+                ],
+                [
+                    'title' => 'Categories of articles',
+                    'bullet' => 'dot',
+                    'page' => 'content.articles.categories.list',
+                    'permissions' => ['admin'],
                 ]
             ]
         ],

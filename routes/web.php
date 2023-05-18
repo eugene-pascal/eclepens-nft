@@ -102,6 +102,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'cpanel'], function() {
         Route::post('ktdatatable/articles/list', 'ArticlesController@listForKTDatatable')->name('ktdatatable.content.articles.list');
         Route::post('article/upload-media/{article}', 'ArticlesController@uploadMedia')->name('content.article.upload.media');
         Route::delete('article/{article}/media/{media}', 'ArticlesController@deleteMedia')->name('content.article.delete.media');
+
+        Route::get('articles/categories/list', 'ArticlesController@categoriesList')->name('content.articles.categories.list');
+        Route::get('article/category/add', 'ArticlesController@categoryAdd')->name('content.article.category.add');
+        Route::post('article/category/add', 'ArticlesController@categoryCreate');
+        Route::get('article/category/{category}', 'ArticlesController@categoryEdit')->name('content.article.category.edit');
+        Route::put('article/category/{category}', 'ArticlesController@categoryUpdate');
+        Route::delete('article/category/{category}', 'ArticlesController@delete');
+        Route::post('ktdatatable/articles/categories/list', 'ArticlesController@categoriesListForKTDatatable')->name('ktdatatable.content.articles.categories.list');
     });
 
 

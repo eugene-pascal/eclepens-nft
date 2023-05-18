@@ -7,11 +7,14 @@ use App\Http\Requests\Cpanel\Articles\EditRequest;
 use App\Http\Requests\Cpanel\Articles\Request;
 use App\Http\Requests\Cpanel\KDTableRequest;
 use App\Http\Resources\Cpanel\ArticleCollection;
+use App\Http\Resources\Cpanel\CategoryCollection;
 use App\Http\Resources\Cpanel\KDTablePaginationCollection;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
@@ -80,15 +83,18 @@ class ArticlesController extends Controller
             }, $postData);
         $article->fill($postData);
         $article->save();
+
+        if (!empty($postData['categories'])) {
+            $article->categories()->sync($postData['categories']);
+        }
         $this->_tagsUpdate($article, $request);
 
         return redirect()->route('content.article.edit', ['article'=>$article->id])
             ->with(['success' => __('Updated')]);
     }
 
-
     /**
-     * Get the members list
+     * Get the articles list
      */
     public function listForKTDatatable(KDTableRequest $request)
     {
@@ -166,7 +172,6 @@ class ArticlesController extends Controller
         ]);
     }
 
-
     /**
      * Uploads the medias
      */
@@ -198,9 +203,7 @@ class ArticlesController extends Controller
     }
 
     /**
-     * @param Article $article
-     * @param $request
-     * @return void
+     * Updates the tags that belong to the article
      */
     private function _tagsUpdate(Article $article, $request): void {
         $tagsArr = json_decode($request->input('tags_names','[]'), true);
@@ -237,7 +240,6 @@ class ArticlesController extends Controller
         }
     }
 
-
     /**
      * Show the page for showing of list categories
      */
@@ -263,22 +265,82 @@ class ArticlesController extends Controller
     }
 
     /**
-     * Update a category
+     * Update or Create a category
      */
-    public function categoryCreate(Category $category, Request $request)
+    public function categoryManage(Category $category, Request $request): RedirectResponse
     {
         $this->validate($request, [
             'name' => 'required|string|max:64'
         ]);
-
-        $postData = $request->all();
-        if (!isset($postData['is_active'])) {
-            $postData['is_active'] = 0;
-        }
-        $category->fill($postData);
+        $category->name = $request->input('name');
+        $category->is_active = $request->input('is_active', 0);
         $category->save();
-
         return redirect()->route('content.article.category.edit', ['category'=>$category])
             ->with(['success' => __('Updated')]);
+    }
+
+    /**
+     * Get the categories list
+     */
+    public function categoriesListForKTDatatable(KDTableRequest $request)
+    {
+        if (!\Auth::user()->isAdmin()) {
+            return ['status'=>'error', 'message'=>'no access permitted'];
+        }
+
+        $sortData = $request->get('sort');
+        $queryData = $request->get('query');
+
+        $query = Category::orderBy('id','DESC');
+
+        if (!empty($queryData)) {
+            if (isset($queryData['display'])&&is_numeric($queryData['display'])) {
+                if (0 == $queryData['display']) {
+                    $query
+                        ->where('is_active','0');
+                }
+                elseif (1 == $queryData['display']) {
+                    $query
+                        ->where('is_active','1');
+                }
+            }
+            if (!empty($queryData['query_search'])) {
+                $query
+                    ->where(function ($query) use ($queryData) {
+                        $query->where('name', 'like', '%'.trim($queryData['query_search']).'%');
+                    });
+            }
+        }
+        if (!empty($sortData)) {
+            if (Schema::hasColumn('sitea', $sortData['field'])) {
+                $query->orderBy($sortData['field'], $sortData['sort']);
+            }
+        }
+
+        $onPage = intval($request->pagination['perpage'] ?? 20);
+        $pager = $query->paginate($onPage);
+        if ($request->page && $pager->isEmpty()) {
+            $pager = $query->paginate($onPage, ['*'], 'page', 1);
+        }
+
+        return response()->json( [
+            'meta'=> new KDTablePaginationCollection($pager),
+            'data'=> CategoryCollection::collection($pager)
+        ]);
+    }
+
+    /**
+     * Delete an article
+     */
+    public function categoryDelete(Category $category, Request $request)
+    {
+        if (!\Auth::user()->isAdmin()) {
+            return ['status'=>'error', 'message'=>'no access permitted'];
+        }
+        $category->delete();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Category has been deleted.'
+        ]);
     }
 }

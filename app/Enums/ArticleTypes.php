@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Enums;
 
+use App\Models\Category;
+
 class ArticleTypes
 {
     /**
@@ -23,5 +25,11 @@ class ArticleTypes
             'it' => __('Italiano'),
             'gr' => __('Ελληνική'),
         ];
+    }
+
+
+    public static function categoryList():array
+    {
+        return Category::active()->get()->toArray();
     }
 }

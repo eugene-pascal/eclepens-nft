@@ -134,7 +134,19 @@
                         </div>
                     </div>
 
-                    @if (!empty($article))
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label" for="type">{{ __('Categories') }}</label>
+                        <div class="col-6">
+                            <select class="form-control" name="categories[]" multiple>
+                                @foreach($articleTypes::categoryList() as $category)
+                                    <option value="{{ $category['id'] }}" {{ in_array($category['id'], $article->categories()->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $category['name'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+
+                @if (!empty($article))
 
                         <div class="separator separator-dashed my-8"></div>
                         <div id="image_container" class="form-group row">

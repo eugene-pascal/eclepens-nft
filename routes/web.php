@@ -105,10 +105,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'cpanel'], function() {
 
         Route::get('articles/categories/list', 'ArticlesController@categoriesList')->name('content.articles.categories.list');
         Route::get('article/category/add', 'ArticlesController@categoryAdd')->name('content.article.category.add');
-        Route::post('article/category/add', 'ArticlesController@categoryCreate');
+        Route::post('article/category/add', 'ArticlesController@categoryManage');
         Route::get('article/category/{category}', 'ArticlesController@categoryEdit')->name('content.article.category.edit');
-        Route::put('article/category/{category}', 'ArticlesController@categoryUpdate');
-        Route::delete('article/category/{category}', 'ArticlesController@delete');
+        Route::put('article/category/{category}', 'ArticlesController@categoryManage');
+        Route::delete('article/category/{category}', 'ArticlesController@categoryDelete');
         Route::post('ktdatatable/articles/categories/list', 'ArticlesController@categoriesListForKTDatatable')->name('ktdatatable.content.articles.categories.list');
     });
 

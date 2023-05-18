@@ -16,7 +16,6 @@ class CreateArticleCategoryTable extends Migration
         Schema::create('article_category', function (Blueprint $table) {
             $table->unsignedBigInteger('article_id');
             $table->unsignedBigInteger('category_id');
-            $table->timestamps();
             $table->unique(['article_id', 'category_id'], 'unique_key');
             $table->index('category_id');
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');

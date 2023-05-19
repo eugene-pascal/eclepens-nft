@@ -272,8 +272,13 @@ class ArticlesController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:64'
         ]);
+
         $category->name = $request->input('name');
         $category->is_active = $request->input('is_active', 0);
+        if ($category->exists === false) {
+            $maxPrior = Category::max('prior');
+            $category->prior = $maxPrior ? $maxPrior + 1 : 1 ;
+        }
         $category->save();
         return redirect()->route('content.article.category.edit', ['category'=>$category])
             ->with(['success' => __('Updated')]);

@@ -15,7 +15,7 @@ class CreateCategoryTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            \Kalnoy\Nestedset\NestedSet::columns($table);
+            $table->unsignedInteger('prior');
             $table->string('name', 64);
             $table->boolean('is_active')->default(false);
             $table->timestamps();

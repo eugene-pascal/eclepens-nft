@@ -30,6 +30,6 @@ class ArticleTypes
 
     public static function categoryList():array
     {
-        return Category::active()->orderBy('prior', 'DESC')->get()->toArray();
+        return Category::active()->orderBy('prior', 'asc')->get()->toArray();
     }
 }

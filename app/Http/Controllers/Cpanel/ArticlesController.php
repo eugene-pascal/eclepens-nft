@@ -296,7 +296,7 @@ class ArticlesController extends Controller
         $sortData = $request->get('sort');
         $queryData = $request->get('query');
 
-        $query = Category::orderBy('id','DESC');
+        $query = Category::query();
 
         if (!empty($queryData)) {
             if (isset($queryData['display'])&&is_numeric($queryData['display'])) {
@@ -316,11 +316,13 @@ class ArticlesController extends Controller
                     });
             }
         }
+
         if (!empty($sortData)) {
-            if (Schema::hasColumn('sitea', $sortData['field'])) {
+            if (Schema::hasColumn('categories', $sortData['field'])) {
                 $query->orderBy($sortData['field'], $sortData['sort']);
             }
         }
+
 
         $onPage = intval($request->pagination['perpage'] ?? 20);
         $pager = $query->paginate($onPage);
@@ -346,6 +348,31 @@ class ArticlesController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Category has been deleted.'
+        ]);
+    }
+
+    /**
+     * Moving categories and change `prior` field accordingly
+     */
+    public function categoryMovePrior(string $direction, string $ids,  Request $request)
+    {
+        list($id1, $id2) = explode('-', $ids);
+        $cat1 = Category::where('prior', $id1)->first();
+        $cat2 = Category::where('prior', $id2)->first();
+        if (!isset($cat1) || !isset($cat2)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Category has been moved'
+            ]);
+        }
+        $prior = $cat1->prior;
+        $cat1->prior = $cat2->prior;
+        $cat2->prior = $prior;
+        $cat1->save();
+        $cat2->save();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Category has been moved'
         ]);
     }
 }

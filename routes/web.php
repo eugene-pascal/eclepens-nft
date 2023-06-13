@@ -110,6 +110,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'cpanel'], function() {
         Route::put('article/category/{category}', 'ArticlesController@categoryManage');
         Route::delete('article/category/{category}', 'ArticlesController@categoryDelete');
         Route::post('ktdatatable/articles/categories/list', 'ArticlesController@categoriesListForKTDatatable')->name('ktdatatable.content.articles.categories.list');
+        Route::put('article/category/move/{direction}/{ids}', 'ArticlesController@categoryMovePrior')->name('content.article.category.move');
     });
 
 

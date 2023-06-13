@@ -471,7 +471,7 @@ class Menu
     // Check for active Vertical Menu item
     public static function isActiveVerMenuItem($item, $page, $rec = 0)
     {
-        if (@$item['redirect'] === true) {
+        if (isset($item['redirect']) && $item['redirect']  === true) {
             return false;
         }
 

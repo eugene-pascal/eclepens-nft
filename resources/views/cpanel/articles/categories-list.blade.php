@@ -75,6 +75,7 @@
     </script>
 
     <script>
+        window.datatable = {};
         var KTDatatableRemoteAjax = function() {
             var pad = function(number) {
                 if (number < 10) {
@@ -102,7 +103,7 @@
                                 },
                             },
                         },
-                        pageSize: 20,
+                        pageSize: 50,
                         saveState: false,
                         serverPaging: true,
                         serverFiltering: true,
@@ -125,13 +126,16 @@
                     },
                     // columns definition
                     columns: [{
-                        field: 'id',
-                        title: '#',
-                        sortable: 'desc',
+                        field: 'prior',
+                        title: 'Prior',
+                        sortable: 'asc',
                         width: 75,
                         type: 'number',
                         selector: false,
                         textAlign: 'center',
+                        template: function(row) {
+                            return '<div class="text-dark font-weight-bolder d-block font-size-sm">' + row.prior + '</div>';
+                        },
                     }, {
                         field: 'name',
                         title: 'Name',
@@ -169,12 +173,23 @@
                         field: 'actions',
                         title: 'Actions',
                         sortable: false,
-                        width: 85,
+                        width: 155,
                         overflow: 'visible',
                         autoHide: false,
                         template: function(row) {
-                            var _link = '{!! route("content.article.category.edit",["category"=>':id']) !!}';
+                            let _link = '{!! route("content.article.category.edit",["category"=>':id']) !!}';
                             _link = _link.replace(':id', row.id);
+                            let _link_move_up = '';
+                            if (row.prev !== null) {
+                                _link_move_up = '{!! route("content.article.category.move",["direction"=>'up',"ids"=>":ids"]) !!}';
+                                _link_move_up = _link_move_up.replace(':ids', row.prior + '-' + row.prev.prior);
+                            }
+                            let _link_move_down = '';
+                            if (row.next !== null) {
+                                _link_move_down = '{!! route("content.article.category.move",["direction"=>'down',"ids"=>":ids"]) !!}';
+                                _link_move_down = _link_move_down.replace(':ids', row.prior + '-' + row.next.prior);
+                            }
+
                             return '\
                                 <a href="'+ _link +'" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">\
                                     <span class="svg-icon svg-icon-md">\
@@ -198,18 +213,40 @@
                                         </svg>\
                                     </span>\
                                 </a>\
+                                <a href="'+ _link_move_down +'" class="btn btn-sm btn-clean btn-icon btn-move-request'+ (_link_move_down === '' ? ' disabled' : '') +'" title="Move down" data-message="Category will be down !">\
+                                    <span class="svg-icon svg-icon-md">\
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
+                                            <polygon points="0 0 24 0 24 24 0 24"/>\
+                                            <rect fill="#000000" opacity="0.3" x="11" y="5" width="2" height="14" rx="1"/>\
+                                            <path d="M6.70710678,18.7071068 C6.31658249,19.0976311 5.68341751,19.0976311 5.29289322,18.7071068 C4.90236893,18.3165825 4.90236893,17.6834175 5.29289322,17.2928932 L11.2928932,11.2928932 C11.6714722,10.9143143 12.2810586,10.9010687 12.6757246,11.2628459 L18.6757246,16.7628459 C19.0828436,17.1360383 19.1103465,17.7686056 18.7371541,18.1757246 C18.3639617,18.5828436 17.7313944,18.6103465 17.3242754,18.2371541 L12.0300757,13.3841378 L6.70710678,18.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 14.999999) scale(1, -1) translate(-12.000003, -14.999999) "/>\
+                                            </g>\
+                                        </svg>\
+                                    </span>\
+                                </a>\
+                                <a href="'+ _link_move_up +'" class="btn btn-sm btn-clean btn-icon btn-move-request'+ (_link_move_up === '' ? ' disabled' : '') +'" title="Move up" data-message="Category will be up !">\
+                                    <span class="svg-icon svg-icon-md">\
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
+                                            <polygon points="0 0 24 0 24 24 0 24"/>\
+                                            <rect fill="#000000" opacity="0.3" x="11" y="5" width="2" height="14" rx="1"/>\
+                                            <path d="M6.70710678,12.7071068 C6.31658249,13.0976311 5.68341751,13.0976311 5.29289322,12.7071068 C4.90236893,12.3165825 4.90236893,11.6834175 5.29289322,11.2928932 L11.2928932,5.29289322 C11.6714722,4.91431428 12.2810586,4.90106866 12.6757246,5.26284586 L18.6757246,10.7628459 C19.0828436,11.1360383 19.1103465,11.7686056 18.7371541,12.1757246 C18.3639617,12.5828436 17.7313944,12.6103465 17.3242754,12.2371541 L12.0300757,7.38413782 L6.70710678,12.7071068 Z" fill="#000000" fill-rule="nonzero"/>\
+                                            </g>\
+                                        </svg>\
+                                    </span>\
+                                </a>\
                             ';
                         },
                     }],
                 };
 
-                var datatable = $('#kt_datatable').KTDatatable(dtConfig);
+                window.datatable = $('#kt_datatable').KTDatatable(dtConfig);
 
                 $('#kt_datatable_search_status').on('change', function() {
-                    datatable.search($(this).val().toLowerCase(), 'display');
+                    window.datatable.search($(this).val().toLowerCase(), 'display');
                 });
 
-                datatable.on('datatable-on-init', function (event,options) {
+                window.datatable.on('datatable-on-init', function (event,options) {
                     // event on init datatable
                 });
 
@@ -283,8 +320,66 @@
             });
         }
 
+        function actionMoveItems() {
+            let _confirmed = false;
+            $(document).on('click', '.btn-move-request', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                let _btn = $(this),
+                    _token = '{{ csrf_token() }}',
+                    _msg = $(this).data('message'),
+                    _confirmBtnName = $(this).data('btn-name');
+
+                if(_btn.hasClass('disabled')) {
+                    return false;
+                }
+                _btn.addClass('disabled');
+
+                swal(
+                    {
+                        title: 'Are you sure?',
+                        text: (_msg ?? 'Item will be moved !' ),
+                        type: 'warning',
+                        showCancelButton: true,
+                        cancelButtonClass: 'btn-light',
+                        confirmButtonClass: 'btn-success',
+                        confirmButtonText: (_confirmBtnName ?? 'Confirm')
+                    },
+                    function() {
+                        $.post(_btn.attr('href'), {_method: 'put', _token})
+                            .done(function() {
+                                $.notify(
+                                    {
+                                        title: '<strong>Success:</strong>',
+                                        message: 'The category successfully moved'
+                                    },
+                                    {
+                                        type: 'success'
+                                    },
+                                );
+
+                                window.datatable.reload();
+                            })
+                            .fail(function() {
+                                $.notify(
+                                    {
+                                        title: '<strong>Error:</strong>',
+                                        message: 'Failed to move the record'
+                                    },
+                                    {
+                                        type: 'danger'
+                                    },
+                                )
+                            });
+                    }
+                );
+                _btn.removeClass('disabled');
+            });
+        }
+
         jQuery(document).ready(function() {
             actionRemoveMember();
+            actionMoveItems();
             KTDatatableRemoteAjax.init();
         });
     </script>

@@ -84,7 +84,7 @@ class Article extends Model implements HasMedia
     public function allTagsIntoStr(string $separator = ','): string
     {
         $arr = $this->tags()->pluck('name')->all();
-        return implode($arr, $separator);
+        return implode($separator, $arr);
     }
 
     /**

@@ -1,12 +1,12 @@
 {{-- Aside --}}
 @php
-    $kt_logo_image = 'logo.svg';
+    $kt_logo_image = 'logo.png';
 @endphp
 
 @if (config('layout.brand.self.theme') === 'light')
-    @php $kt_logo_image = 'logo-dark.png' @endphp
+    @php $kt_logo_image = 'logo.png' @endphp
 @elseif (config('layout.brand.self.theme') === 'dark')
-    @php $kt_logo_image = 'logo.svg' @endphp
+    @php $kt_logo_image = 'logo.png' @endphp
 @endif
 
 <div class="aside aside-left {{ Metronic::printClasses('aside', false) }} d-flex flex-column flex-row-auto" id="kt_aside">
@@ -15,7 +15,7 @@
     <div class="brand flex-column-auto {{ Metronic::printClasses('brand', false) }}" id="kt_brand" style="background: #c9f7f4 !important;">
         <div class="brand-logo">
             <a href="{{ route('dashboard') }}">
-                <img height="77" alt="{{ config('app.name') }}" src="{{ asset('theme_assets/media/logos/'.$kt_logo_image) }}"/>
+                <img height="55" alt="{{ config('app.name') }}" src="{{ asset('theme_assets/media/logos/'.$kt_logo_image) }}"/>
             </a>
         </div>
 

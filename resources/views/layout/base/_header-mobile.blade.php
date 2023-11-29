@@ -4,28 +4,28 @@
         <a href="{{ url('/') }}">
 
             @php
-                $kt_logo_image = 'logo.svg'
+                $kt_logo_image = 'logo.png'
             @endphp
 
             @if (config('layout.aside.self.display') == false)
 
                 @if (config('layout.header.self.theme') === 'light')
-                    @php $kt_logo_image = 'logo.svg' @endphp
+                    @php $kt_logo_image = 'logo.png' @endphp
                 @elseif (config('layout.header.self.theme') === 'dark')
-                    @php $kt_logo_image = 'logo.svg' @endphp
+                    @php $kt_logo_image = 'logo.png' @endphp
                 @endif
 
             @else
 
                 @if (config('layout.brand.self.theme') === 'light')
-                    @php $kt_logo_image = 'logo.svg' @endphp
+                    @php $kt_logo_image = 'logo.png' @endphp
                 @elseif (config('layout.brand.self.theme') === 'dark')
-                    @php $kt_logo_image = 'logo.svg' @endphp
+                    @php $kt_logo_image = 'logo.png' @endphp
                 @endif
 
             @endif
 
-            <img height="80" alt="{{ config('app.name') }}" src="{{ asset('theme_assets/media/logos/'.$kt_logo_image) }}"/>
+            <img height="50" alt="{{ config('app.name') }}" src="{{ asset('theme_assets/media/logos/'.$kt_logo_image) }}"/>
         </a>
     </div>
     <div class="d-flex align-items-center">

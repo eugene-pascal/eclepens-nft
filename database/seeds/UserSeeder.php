@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
         $model = new \App\Models\User([
             'name' => 'mr.Pascal',
             'email' => 'webradsupport@gmail.com',
-            'password' => Hash::make('odessa77'),
+            'password' => Hash::make('passw123'),
             'status' => '1',
         ]);
         $model->save();

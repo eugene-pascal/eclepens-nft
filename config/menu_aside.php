@@ -88,6 +88,16 @@ return [
         ],
 
         [
+            'title' => 'NFT',
+            'desc' => '',
+            'icon' => 'media/svg/icons/Food/Wine.svg',
+            'bullet' => 'dot',
+            'page' => 'content.nft.list',
+            'root' => true,
+            'permissions' => ['admin'],
+        ],
+
+        [
             'section' => 'Config',
             'permissions' => ['admin']
         ],

@@ -1,10 +1,10 @@
 @extends('layout.default')
-@section('title', __('The list of artcles'))
+@section('title', __('The list of NFTs'))
 @php
     $page_breadcrumbs = [
             [
                 'page'=>url()->current(),
-                'title'=> __('List of articles')
+                'title'=> __('List of NFTs')
             ]
         ];
 @endphp
@@ -14,15 +14,15 @@
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
             <div class="card-title">
                 <h3 class="card-label">
-                    @lang('Articles')
+                    @lang('NFTs')
                     <div class="text-muted pt-2 font-size-sm"></div>
                 </h3>
             </div>
             <div class="card-toolbar">
                 <!--begin::Button-->
-                <a href="{{ route('content.article.add') }}" class="btn btn-light-primary font-weight-normal">
+                <a href="{{ route('content.nft.add') }}" class="btn btn-light-primary font-weight-normal">
                     {{ Metronic::getSVG("media/svg/icons/Design/Flatten.svg", "svg-icon-md") }}
-                    @lang('Add a new article')
+                    @lang('Add a new NFT')
                 </a>
                 <!--end::Button-->
             </div>
@@ -77,7 +77,7 @@
 @section('scripts')
     <script src="{{ asset('theme_assets/vendors/bootstrap-sweetalert/dist/sweetalert.min.js') }}" type="text/javascript"></script>
     <script>
-        var HOST_URL = "{{ route('ktdatatable.content.articles.list') }}";
+        var HOST_URL = "{{ route('ktdatatable.content.nft.list') }}";
         var USER_TYPE = 'user';
     </script>
 
@@ -140,19 +140,11 @@
                         selector: false,
                         textAlign: 'center',
                     }, {
-                        field: 'title',
-                        title: 'Title',
+                        field: 'name',
+                        title: 'Name',
                         width: 150,
                         template: function(row) {
-                            return '<div class="text-dark-75 font-weight-bolder d-block font-size-sm">' + row.title + '</div>';
-                        },
-                    }, {
-                        field: 'code_lang2',
-                        title: 'Lang',
-                        // visible: !1,
-                        width: 50,
-                        template: function(row) {
-                            return '<span class="text-primary font-weight-normal font-size-sm">' + row.code_lang2 + '</span>';
+                            return '<div class="text-dark-75 font-weight-bolder d-block font-size-sm">' + row.name + '</div>';
                         },
                     }, {
                         field: 'status',
@@ -163,20 +155,6 @@
                                 return '<i class="fa fa-check text-success"></i>';
                             }
                             return '<i class="fa fa-times text-danger"></i>';
-                        },
-                    },{
-                        field: 'code_unique',
-                        title: 'code unique',
-                        width: 75,
-                        template: function(row) {
-                            return '<span class="text-dark font-weight-normal font-size-sm">' + row.code_unique + '</span>';
-                        },
-                    },{
-                        field: 'code_name',
-                        title: 'code name',
-                        width: 75,
-                        template: function(row) {
-                            return '<span class="text-dark font-weight-normal font-size-sm">' + row.code_name + '</span>';
                         },
                     },{
                         field: 'tags',
@@ -216,7 +194,7 @@
                         overflow: 'visible',
                         autoHide: false,
                         template: function(row) {
-                            var _link = '{!! route("content.article.edit",["article"=>':id']) !!}';
+                            var _link = '{!! route("content.nft.edit",["nft"=>':id']) !!}';
                             _link = _link.replace(':id', row.id);
                             return '\
                                 <a href="'+ _link +'" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">\

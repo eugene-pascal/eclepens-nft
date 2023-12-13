@@ -216,7 +216,7 @@ class ArticlesController extends Controller
             $detachedIds = Arr::pluck($article->tags()->select('id')->whereNotIn('slug',$slugsArr)->get()->toArray(),'id');
             $article->tags()->detach($detachedIds);
             // remove all tags empty
-            Tag::doesntHave('articles')->delete();
+            Tag::doesntHave('articles')->doesntHave('nft')->delete();
             $attachedSlugs = Arr::pluck($article->tags()->select('slug')->whereIn('slug',$slugsArr)->get()->toArray(),'slug');
             foreach ($tagsArr as $tagName) {
                 $slugName = Str::slug($tagName,'-');
@@ -236,7 +236,7 @@ class ArticlesController extends Controller
             $detachedIds = Arr::pluck($article->tags()->select('id')->get()->toArray(),'id');
             $article->tags()->detach($detachedIds);
             // remove all tags empty
-            Tag::doesntHave('articles')->delete();
+            Tag::doesntHave('articles')->doesntHave('nft')->delete();
         }
     }
 

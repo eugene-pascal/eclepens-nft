@@ -13,7 +13,7 @@ class CreateNftTable extends Migration
      */
     public function up()
     {
-        Schema::create('nft', function (Blueprint $table) {
+        Schema::create('nfts', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->nullable()->unique();
             $table->string('standard', 32);
@@ -34,6 +34,6 @@ class CreateNftTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nft');
+        Schema::dropIfExists('nfts');
     }
 }

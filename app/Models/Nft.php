@@ -3,18 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Article extends Model implements HasMedia
+class Nft extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    const _MEDIA_COLLECTION_NAME = 'article';
+    const _MEDIA_COLLECTION_NAME = 'nft';
 
     /**
      * The attributes that are mass assignable.
@@ -23,16 +22,13 @@ class Article extends Model implements HasMedia
      */
     protected $fillable = [
         'slug',
-        'code_lang2',
-        'code_unique',
-        'code_name',
-        'title',
-        'text',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
+        'standard',
+        'author',
+        'name',
+        'descr',
         'display',
-        'published_at'
+        'published_at',
+        'max_nft'
     ];
 
     /**
@@ -56,23 +52,13 @@ class Article extends Model implements HasMedia
     }
 
     /**
-     * Get all tags for the article
+     * Get all tags for the NFT
      *
      * @return MorphToMany
      */
     public function tags(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable', 'terms_taggable',null,'term_id');
-    }
-
-    /**
-     * Get the categories belongs to
-     *
-     * @return BelongsToMany
-     */
-    public function categories(): BelongsToMany
-    {
-        return $this->belongsToMany(Category::class);
     }
 
     /**

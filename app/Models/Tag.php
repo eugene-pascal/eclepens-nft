@@ -43,5 +43,14 @@ class Tag extends Model
     {
         return $this->morphedByMany(Article::class, 'taggable', 'terms_taggable','term_id');
     }
+
+
+    /**
+     * Get all of the NFT that are assigned this tag.
+     */
+    public function nft():MorphToMany
+    {
+        return $this->morphedByMany(Nft::class, 'taggable', 'terms_taggable','term_id');
+    }
 }
 

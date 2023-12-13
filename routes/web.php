@@ -111,6 +111,16 @@ Route::group(['middleware' => 'auth', 'prefix' => 'cpanel'], function() {
         Route::delete('article/category/{category}', 'ArticlesController@categoryDelete');
         Route::post('ktdatatable/articles/categories/list', 'ArticlesController@categoriesListForKTDatatable')->name('ktdatatable.content.articles.categories.list');
         Route::put('article/category/move/{direction}/{ids}', 'ArticlesController@categoryMovePrior')->name('content.article.category.move');
+
+        Route::get('nft/list', 'NftController@list')->name('content.nft.list');
+        Route::get('nft/add', 'NftController@add')->name('content.nft.add');
+        Route::post('nft/add', 'NftController@create');
+        Route::get('nft/{nft}', 'NftController@edit')->name('content.nft.edit');
+        Route::put('nft/{nft}', 'NftController@update');
+        Route::delete('nft/{nft}', 'NftController@delete');
+        Route::post('ktdatatable/nft/list', 'NftController@listForKTDatatable')->name('ktdatatable.content.nft.list');
+        Route::post('nft/upload-media/{nft}', 'NftController@uploadMedia')->name('content.nft.upload.media');
+        Route::delete('nft/{nft}/media/{media}', 'NftController@deleteMedia')->name('content.nft.delete.media');
     });
 
 

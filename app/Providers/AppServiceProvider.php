@@ -16,7 +16,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Relation::enforceMorphMap([
-            'article' => 'App\Models\Article'
+            'article' => 'App\Models\Article',
+            'nft' => 'App\Models\Nft'
         ]);
     }
 

@@ -49,6 +49,17 @@ class Nft extends Model implements HasMedia
             ->addMediaConversion('thumb300x300')
             ->fit(Manipulations::FIT_CROP, 300, 300)
             ->nonQueued();
+
+        $this
+            ->addMediaConversion('thumb')
+            ->width(272)
+            ->height(363)
+            ->sharpen(10)
+            ->nonQueued();
+    }
+
+    public function scopeActive($query) {
+        return $query->where('display', true);
     }
 
     /**

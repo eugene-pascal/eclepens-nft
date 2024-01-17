@@ -71,7 +71,7 @@
                     @if (\Auth::check())
                         <a href="{{ route('dashboard') }}">Cpanel</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">Login0</a>
                     @endauth
                 </div>
             @endif

@@ -21,14 +21,14 @@ Route::group(['middleware' => 'guest'], function() {
     Route::get('/access-to-cpanel', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('/access-to-cpanel', 'Auth\LoginController@login');
 
-    Route::group(['prefix' => 'member'], function () {
-        Route::get('login', 'Auth\LoginController@showMemberLoginForm')->name('member.login');
-        Route::post('login', 'Auth\LoginController@login');
-        Route::post('create', 'Auth\RegisterController@createMember')->name('member.create');
-        Route::post('forgot', 'Auth\ForgotPasswordController@newPassword')->name('member.forgot');
-        Route::post('email', 'Auth\RegisterController@matchEmail')->name('match.member.email');
-        Route::get('validate/email/{code}', 'Auth\RegisterController@validateEmail')->name('member.validate.email');
-    });
+//    Route::group(['prefix' => 'member'], function () {
+//        Route::get('login', 'Auth\LoginController@showMemberLoginForm')->name('member.login');
+//        Route::post('login', 'Auth\LoginController@login');
+//        Route::post('create', 'Auth\RegisterController@createMember')->name('member.create');
+//        Route::post('forgot', 'Auth\ForgotPasswordController@newPassword')->name('member.forgot');
+//        Route::post('email', 'Auth\RegisterController@matchEmail')->name('match.member.email');
+//        Route::get('validate/email/{code}', 'Auth\RegisterController@validateEmail')->name('member.validate.email');
+//    });
 });
 
 Route::group(['middleware' => 'auth', 'prefix' => 'cpanel'], function() {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nft;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -26,8 +27,10 @@ class IndexController extends Controller
         if (\Auth::guest()) {
             //return redirect()->route('member.login');
         } else {
-            return redirect()->route('dashboard');
+            //return redirect()->route('dashboard');
         }
-        return view('index');
+        $queryOnNft = Nft::active()->orderBy('id','DESC');
+
+        return view('nerko.index', compact('queryOnNft'));
     }
 }

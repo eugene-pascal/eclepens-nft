@@ -139,12 +139,31 @@
                         type: 'number',
                         selector: false,
                         textAlign: 'center',
+                    },{
+                        field: 'prior',
+                        title: 'Order ID',
+                        sortable: 'desc',
+                        width: 75,
+                        type: 'number',
+                        textAlign: 'center',
+                        template: function(row) {
+                            return '<div class="text-dark-75 font-weight-bolder d-block font-size-sm">' + row.prior + '</div>';
+                        },
                     }, {
                         field: 'name',
                         title: 'Name',
                         width: 150,
                         template: function(row) {
                             return '<div class="text-dark-75 font-weight-bolder d-block font-size-sm">' + row.name + '</div>';
+                        },
+                    },{
+                        field: 'thumb',
+                        title: 'Thumb',
+                        width: 120,
+                        template: function(row) {
+                            if (typeof row.media[0] !== 'undefined')
+                                return '<img width="100px;" src="' + row.media[0].thumb_url + '">';
+                            return '';
                         },
                     }, {
                         field: 'status',

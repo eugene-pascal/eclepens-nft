@@ -37,7 +37,7 @@
                                     <path fill="#F796FF" d="M47.5,-67.2C55.9,-59.3,53.2,-37.9,56.7,-20.1C60.2,-2.3,69.9,11.8,70.8,27.3C71.7,42.9,63.8,59.9,50.6,64.4C37.3,68.9,18.6,60.8,-0.3,61.2C-19.3,61.6,-38.6,70.7,-53.5,66.7C-68.4,62.8,-78.9,45.9,-78.8,29.5C-78.7,13.2,-67.9,-2.7,-59.8,-16.8C-51.6,-31,-46,-43.3,-36.5,-50.9C-27,-58.4,-13.5,-61.1,3,-65.2C19.6,-69.4,39.1,-75.1,47.5,-67.2Z" transform="translate(100 100)">
                                 </svg>
                                 <div class="uk-grid uk-grid-xsmall uk-child-width-1-2" data-uk-grid="masonry: true;">
-                                    @foreach($queryOnNft->limit(2)->get() as $indx=>$nft)
+                                    @foreach($queryOnNft->orderBy('prior', 'desc')->limit(2)->get() as $indx=>$nft)
                                         @if($nft->getMedia(\App\Models\Nft::_MEDIA_COLLECTION_NAME)->count()>0)
                                         <div{!!(1 == $indx ? ' class="uk-margin-large-top"' : '') !!}>
                                             <div class="uni-item uk-card uk-overflow-hidden uk-radius uk-radius-large@m uk-box-shadow-hover-medium uk-visible-toggle uk-transition-toggle uk-box-shadow-medium uk-background-white dark:uk-background-white-5">
@@ -244,9 +244,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="uk-width-expand">
-                                                                    <span class="uk-text-small@m"
-                                                                    >Collections Indexed <br>
-                                                                        every 5mins.</span>
+                                                            <span class="uk-text-small@m">Collections Indexed <br>every 5mins.</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -260,9 +258,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="uk-width-expand">
-                                                                    <span class="uk-text-small@m"
-                                                                    >Difference in Floor & <br>
-                                                                        Estimated Value</span>
+                                                            <span class="uk-text-small@m">Difference in Floor & <br>Estimated Value</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -292,118 +288,27 @@
             </header>
             <div class="uk-panel uk-margin-top uk-margin-xlarge-top@m">
                 <div class="uk-grid-xsmall uk-grid@m uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-grid" data-uk-grid="masonry: true;" data-anime="targets: > * > *; opacity:[0, 1]; translateY:[48, 0]; onview: -400; delay: anime.stagger(100);">
-                    <div class="uk-padding-medium-top@m">
-                        <div class="uni-artwork uk-card uk-card-xsmall uk-text-center uk-overflow-hidden uk-radius-medium uk-radius-large@m uk-box-shadow-xsmall dark:uk-background-white-5">
-                            <div class="uni-artwork-featured-image uk-panel uk-flex-middle uk-flex-center">
-                                <div class="uk-panel uk-image-middle"><img src="{{ asset('skin/nerko/assets/images/artwork/06.jpg') }}" alt="" class="uk-radius-small uk-radius-medium@m" loading="lazy"> <a href="#" class="uk-position-cover" aria-label="Metaverse"></a></div>
-                            </div>
+                    @foreach($queryOnNft->orderBy('prior', 'desc')->limit(8)->get() as $indx=>$nft)
+                        @if($nft->getMedia(\App\Models\Nft::_MEDIA_COLLECTION_NAME)->count()>0)
+                            <div{!!(0 == $indx % 2 ? ' class="uk-padding-medium-top@m"' : '') !!}>
+                                <div class="uni-artwork uk-card uk-card-xsmall uk-text-center uk-overflow-hidden uk-radius-medium uk-radius-large@m uk-box-shadow-xsmall dark:uk-background-white-5">
+                                    <div class="uni-artwork-featured-image uk-panel uk-flex-middle uk-flex-center">
+                                        <div class="uk-panel uk-image-middle">
+                                            <img src="{{$nft->getMedia(\App\Models\Nft::_MEDIA_COLLECTION_NAME)->first()->getUrl('thumb') }}" alt="" class="uk-radius-small uk-radius-medium@m" loading="lazy">
+                                            <a href="#" class="uk-position-cover" aria-label=""></a>
+                                        </div>
+                                    </div>
 
-                            <div class="uni-artwork-content uk-panel uk-margin-small-top uk-margin-2xsmall-bottom uk-flex-column uk-flex-middle">
-                                <h2 class="uk-h6 uk-h5@m uk-margin-remove">
-                                    <a class="uk-link-reset" href="#">#Metaverse</a>
-                                </h2>
-                                <span class="uk-text-meta uk-margin-xsmall-top uk-visible@m">By TheSalvare</span>
+                                    <div class="uni-artwork-content uk-panel uk-margin-small-top uk-margin-2xsmall-bottom uk-flex-column uk-flex-middle">
+                                        <h2 class="uk-h6 uk-h5@m uk-margin-remove">
+                                            <a class="uk-link-reset" href="#">{{ $nft->name }}</a>
+                                        </h2>
+                                        <span class="uk-text-meta uk-margin-xsmall-top uk-visible@m">By {{ $nft->author }}</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="uni-artwork uk-card uk-card-xsmall uk-text-center uk-overflow-hidden uk-radius-medium uk-radius-large@m uk-box-shadow-xsmall dark:uk-background-white-5">
-                            <div class="uni-artwork-featured-image uk-panel uk-flex-middle uk-flex-center">
-                                <div class="uk-panel uk-image-middle"><img src="{{ asset('skin/nerko/assets/images/artwork/07.jpg') }}" alt="" class="uk-radius-small uk-radius-medium@m" loading="lazy"> <a href="#" class="uk-position-cover" aria-label="Polly Doll"></a></div>
-                            </div>
-
-                            <div class="uni-artwork-content uk-panel uk-margin-small-top uk-margin-2xsmall-bottom uk-flex-column uk-flex-middle">
-                                <h2 class="uk-h6 uk-h5@m uk-margin-remove">
-                                    <a class="uk-link-reset" href="#">#Polly Doll</a>
-                                </h2>
-                                <span class="uk-text-meta uk-margin-xsmall-top uk-visible@m">By TheSalvare</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="uk-padding-medium-top@m">
-                        <div class="uni-artwork uk-card uk-card-xsmall uk-text-center uk-overflow-hidden uk-radius-medium uk-radius-large@m uk-box-shadow-xsmall dark:uk-background-white-5">
-                            <div class="uni-artwork-featured-image uk-panel uk-flex-middle uk-flex-center">
-                                <div class="uk-panel uk-image-middle"><img src="{{ asset('skin/nerko/assets/images/artwork/16.jpg') }}" alt="" class="uk-radius-small uk-radius-medium@m" loading="lazy"> <a href="#" class="uk-position-cover" aria-label="Alec Art"></a></div>
-                            </div>
-
-                            <div class="uni-artwork-content uk-panel uk-margin-small-top uk-margin-2xsmall-bottom uk-flex-column uk-flex-middle">
-                                <h2 class="uk-h6 uk-h5@m uk-margin-remove">
-                                    <a class="uk-link-reset" href="#">#Alec Art</a>
-                                </h2>
-                                <span class="uk-text-meta uk-margin-xsmall-top uk-visible@m">By Georgijevic</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="uni-artwork uk-card uk-card-xsmall uk-text-center uk-overflow-hidden uk-radius-medium uk-radius-large@m uk-box-shadow-xsmall dark:uk-background-white-5">
-                            <div class="uni-artwork-featured-image uk-panel uk-flex-middle uk-flex-center">
-                                <div class="uk-panel uk-image-middle"><img src="{{ asset('skin/nerko/assets/images/artwork/11.jpg') }}" alt="" class="uk-radius-small uk-radius-medium@m" loading="lazy"> <a href="#" class="uk-position-cover" aria-label="Toxic Poeth"></a></div>
-                            </div>
-
-                            <div class="uni-artwork-content uk-panel uk-margin-small-top uk-margin-2xsmall-bottom uk-flex-column uk-flex-middle">
-                                <h2 class="uk-h6 uk-h5@m uk-margin-remove">
-                                    <a class="uk-link-reset" href="#">#Toxic Poeth</a>
-                                </h2>
-                                <span class="uk-text-meta uk-margin-xsmall-top uk-visible@m">By Yayoi</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="uni-artwork uk-card uk-card-xsmall uk-text-center uk-overflow-hidden uk-radius-medium uk-radius-large@m uk-box-shadow-xsmall dark:uk-background-white-5">
-                            <div class="uni-artwork-featured-image uk-panel uk-flex-middle uk-flex-center">
-                                <div class="uk-panel uk-image-middle"><img src="{{ asset('skin/nerko/assets/images/artwork/01.jpg') }}" alt="" class="uk-radius-small uk-radius-medium@m" loading="lazy"> <a href="#" class="uk-position-cover" aria-label="Saphyre"></a></div>
-                            </div>
-
-                            <div class="uni-artwork-content uk-panel uk-margin-small-top uk-margin-2xsmall-bottom uk-flex-column uk-flex-middle">
-                                <h2 class="uk-h6 uk-h5@m uk-margin-remove">
-                                    <a class="uk-link-reset" href="#">#Saphyre</a>
-                                </h2>
-                                <span class="uk-text-meta uk-margin-xsmall-top uk-visible@m">By CryptoX</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="uni-artwork uk-card uk-card-xsmall uk-text-center uk-overflow-hidden uk-radius-medium uk-radius-large@m uk-box-shadow-xsmall dark:uk-background-white-5">
-                            <div class="uni-artwork-featured-image uk-panel uk-flex-middle uk-flex-center">
-                                <div class="uk-panel uk-image-middle"><img src="{{ asset('skin/nerko/assets/images/artwork/13.jpg') }}" alt="" class="uk-radius-small uk-radius-medium@m" loading="lazy"> <a href="#" class="uk-position-cover" aria-label="Charcuterie"></a></div>
-                            </div>
-
-                            <div class="uni-artwork-content uk-panel uk-margin-small-top uk-margin-2xsmall-bottom uk-flex-column uk-flex-middle">
-                                <h2 class="uk-h6 uk-h5@m uk-margin-remove">
-                                    <a class="uk-link-reset" href="#">#Charcuterie</a>
-                                </h2>
-                                <span class="uk-text-meta uk-margin-xsmall-top uk-visible@m">By Texira</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="uni-artwork uk-card uk-card-xsmall uk-text-center uk-overflow-hidden uk-radius-medium uk-radius-large@m uk-box-shadow-xsmall dark:uk-background-white-5">
-                            <div class="uni-artwork-featured-image uk-panel uk-flex-middle uk-flex-center">
-                                <div class="uk-panel uk-image-middle"><img src="{{ asset('skin/nerko/assets/images/artwork/12.jpg') }}" alt="" class="uk-radius-small uk-radius-medium@m" loading="lazy"> <a href="#" class="uk-position-cover" aria-label="Paradise"></a></div>
-                            </div>
-
-                            <div class="uni-artwork-content uk-panel uk-margin-small-top uk-margin-2xsmall-bottom uk-flex-column uk-flex-middle">
-                                <h2 class="uk-h6 uk-h5@m uk-margin-remove">
-                                    <a class="uk-link-reset" href="#">#Paradise</a>
-                                </h2>
-                                <span class="uk-text-meta uk-margin-xsmall-top uk-visible@m">By CryptoX</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="uni-artwork uk-card uk-card-xsmall uk-text-center uk-overflow-hidden uk-radius-medium uk-radius-large@m uk-box-shadow-xsmall dark:uk-background-white-5">
-                            <div class="uni-artwork-featured-image uk-panel uk-flex-middle uk-flex-center">
-                                <div class="uk-panel uk-image-middle"><img src="{{ asset('skin/nerko/assets/images/artwork/07.jpg') }}" alt="" class="uk-radius-small uk-radius-medium@m" loading="lazy"> <a href="#" class="uk-position-cover" aria-label="HighCity"></a></div>
-                            </div>
-
-                            <div class="uni-artwork-content uk-panel uk-margin-small-top uk-margin-2xsmall-bottom uk-flex-column uk-flex-middle">
-                                <h2 class="uk-h6 uk-h5@m uk-margin-remove">
-                                    <a class="uk-link-reset" href="#">#HighCity</a>
-                                </h2>
-                                <span class="uk-text-meta uk-margin-xsmall-top uk-visible@m">By TheSalvare</span>
-                            </div>
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
                 </div>
                 <div class="uni-btn uk-margin-medium-top uk-margin-2xlarge-top@m uk-flex-center" data-anime="opacity:[0, 1]; translateY:[-24, 0]; onview: true; delay: 200;">
                     <a href="#view_in_opensea" class="uk-button uk-button-small uk-button-large@m uk-button-gradient">

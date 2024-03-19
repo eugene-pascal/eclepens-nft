@@ -56,7 +56,9 @@ class NftController extends Controller
             return ($v === null) ? '' : $v;
         }, $postData);
 
+        $maxPrior = (int)Nft::max('prior');
         $model = new Nft($postData);
+        $model->prior = $maxPrior + 1;
         if ($model->save()) {
             $this->_tagsUpdate($model, $request);
         }
@@ -76,7 +78,7 @@ class NftController extends Controller
         $sortData = $request->get('sort');
         $queryData = $request->get('query');
 
-        $query = Nft::orderBy('id','DESC');
+        $query = Nft::query();
 
         if (!empty($queryData)) {
             if (isset($queryData['display'])&&is_numeric($queryData['display'])) {
@@ -108,10 +110,13 @@ class NftController extends Controller
                     });
             }
         }
+
         if (!empty($sortData)) {
-            if (Schema::hasColumn('articles', $sortData['field'])) {
+            if (Schema::hasColumn('nfts', $sortData['field'])) {
                 $query->orderBy($sortData['field'], $sortData['sort']);
             }
+        } else {
+            $query->orderBy('prior', 'desc');
         }
 
         $onPage = intval($request->pagination['perpage'] ?? 20);

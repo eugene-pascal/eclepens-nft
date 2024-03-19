@@ -33,10 +33,18 @@
 
                     <div class="form-group row">
                         <label class="col-2 col-form-label" for="name" class="required">{{ __('Name')}} <i class="text-danger">*</i></label>
-                        <div class="col-10">
+                        <div class="col-7">
                             <input type="text" class="form-control" name="name" value="{{old('name', $nft->name ?? '')}}"  placeholder=""/>
                             @if($errors->has('name'))
                                 <div class="error text-danger font-size-sm">{{ $errors->first('name') }}</div>
+                            @endif
+                        </div>
+
+                        <label class="col-1 col-form-label" for="header" class="required">{{ __('Prior') }} <i class="text-danger">*</i></label>
+                        <div class="col-2">
+                            <input type="number" maxlength="5" class="form-control" name="prior" value="{{old('prior', $nft->prior ?? '')}}" placeholder=""/>
+                            @if($errors->has('prior'))
+                                <div class="error text-danger font-size-sm">{{ $errors->first('prior') }}</div>
                             @endif
                         </div>
                     </div>
@@ -110,11 +118,9 @@
                             </div>
                         </div>
                     </div>
-                    
 
 
                 @if (!empty($nft))
-
                         <div class="separator separator-dashed my-8"></div>
                         <div id="image_container" class="form-group row">
                             @if($nft->getMedia(\App\Models\Nft::_MEDIA_COLLECTION_NAME)->count()>0)

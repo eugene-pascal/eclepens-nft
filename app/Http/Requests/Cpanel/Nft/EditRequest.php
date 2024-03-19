@@ -21,6 +21,13 @@ class EditRequest extends BaseRequest
         }
 
         return [
+            'prior' => [
+                'required',
+                'numeric',
+                'alpha_dash',
+                'max:999',
+                $slug
+            ],
             'name' => 'required|max:255',
             'standard' => 'required|max:32',
             'descr' => 'required',

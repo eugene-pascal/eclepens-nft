@@ -69,21 +69,11 @@
                 <div class="uk-card uk-card-small">
                     <div class="uk-panel">
                         <ul class="uk-nav uk-nav-default">
-                            <li class="uk-nav-header">Homepages</li>
-                            <li><a href="landing-01.html">Landing 01</a></li>
-                            <li><a href="landing-02.html">Landing 02</a></li>
-                            <li><a href="landing-03.html">Landing 03</a></li>
-                            <li><a href="landing-04.html">Landing 04</a></li>
-                            <li><a href="landing-05.html">Landing 05</a></li>
-                            <li class="uk-nav-header">Inner pages</li>
-                            <li><a href="base.html">Base components</a></li>
-                            <li><a href="connect-wallet.html">Connect wallet</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="404.html">404 page</a></li>
-                            <li><a href="coming-soon.html">Coming soon</a></li>
-                            <li class="uk-nav-header">Content &amp; Privacy</li>
-                            <li><a href="terms.html">Terms of use</a></li>
-                            <li><a href="privact.html">Privacy Policy</a></li>
+                            <li class="uk-nav-header"><a href="#uni_minting">Minting</a></li>
+                            <li class="uk-nav-header"><a href="#uni_about">About</a></li>
+                            <li class="uk-nav-header"><a href="#uni_collection">Collection</a></li>
+                            <li class="uk-nav-header"><a href="#uni_roadmap">Roadmap</a></li>
+                            <li class="uk-nav-header"><a href="#uni_team">Team</a></li>
                         </ul>
                     </div>
                 </div>
@@ -153,8 +143,8 @@
                     <div class="uk-navbar-top">
                         <div class="uk-navbar-left">
                             <a class="uk-logo uk-navbar-item uk-h4 uk-h3@m uk-margin-remove" href="landing-01.html">
-                                <img class="uk-visible dark:uk-hidden" width="120" src="{{ asset('skin/nerko/assets/images/nerko-light.svg') }}" alt="" loading="lazy">
-                                <img class="uk-hidden dark:uk-visible" width="120" src="{{ asset('skin/nerko/assets/images/nerko-dark.svg') }}" alt="" loading="lazy"> </a>
+                                <img class="uk-visible dark:uk-hidden" width="120" src="{{ asset('skin/nerko/assets/images/logo-eclepens-black.png') }}" alt="" loading="lazy">
+                                <img class="uk-hidden dark:uk-visible" width="120" src="{{ asset('skin/nerko/assets/images/logo-eclepens-white.png') }}" alt="" loading="lazy"> </a>
                         </div>
 
                         <div class="uk-navbar-right uk-flex-1 uk-flex-right">
@@ -216,7 +206,7 @@
                 <div class="uk-width-large@m">
                     <div class="uk-panel">
                         <a href="landing-01.html" class="uk-logo">
-                            <img width="200" src="{{ asset('skin/nerko/assets/images/nerko.svg') }}" alt="Nerko">
+{{--                            <img width="200" src="{{ asset('skin/nerko/assets/images/nerko.svg') }}" alt="Nerko">--}}
                         </a>
                         <p class="uk-text-xlarge@m uk-margin-medium-top@m">We make it easy to discover, Invest and manage all your NFTs at one place.</p>
                         <ul class="uk-subnav uk-subnav-small uk-flex-center uk-text-gray-40 uk-margin-top uk-margin-medium-top@m">
@@ -243,7 +233,7 @@
                         </ul>
                     </div>
                     <div class="uk-flex-first@m uk-flex-center">
-                        <p class="uk-text-muted">© 2022 Nerko. All rights reserved.</p>
+                        <p class="uk-text-muted">© 2024 Nerko. All rights reserved.</p>
                     </div>
                 </div>
             </div>

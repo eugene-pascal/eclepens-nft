@@ -21,6 +21,7 @@ class Nft extends Model implements HasMedia
      * @var array
      */
     protected $fillable = [
+        'prior',
         'slug',
         'standard',
         'author',

@@ -19,6 +19,7 @@ class MediaCollection extends JsonResource
             'id' => $this->id ?? null,
             'mime_type' => $this->mime_type,
             'original_url' => $this->original_url,
+            'thumb_url' => $this->getUrl('thumb'),
             'name' => $this->name,
             'size' => $this->size,
             'collection_name' => $this->collection_name,

@@ -29,7 +29,7 @@ class IndexController extends Controller
         } else {
             //return redirect()->route('dashboard');
         }
-        $queryOnNft = Nft::active()->orderBy('id','DESC');
+        $queryOnNft = Nft::active();
 
         return view('nerko.index', compact('queryOnNft'));
     }

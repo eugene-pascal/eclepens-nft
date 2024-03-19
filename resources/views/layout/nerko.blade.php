@@ -72,8 +72,6 @@
                             <li class="uk-nav-header"><a href="#uni_minting">Minting</a></li>
                             <li class="uk-nav-header"><a href="#uni_about">About</a></li>
                             <li class="uk-nav-header"><a href="#uni_collection">Collection</a></li>
-                            <li class="uk-nav-header"><a href="#uni_roadmap">Roadmap</a></li>
-                            <li class="uk-nav-header"><a href="#uni_team">Team</a></li>
                         </ul>
                     </div>
                 </div>
@@ -152,8 +150,6 @@
                                 <li><a href="#uni_minting">Minting</a></li>
                                 <li><a href="#uni_about">About</a></li>
                                 <li><a href="#uni_collection">Collection</a></li>
-                                <li><a href="#uni_roadmap">Roadmap</a></li>
-                                <li><a href="#uni_team">Team</a></li>
                             </ul>
                             <div class="uk-navbar-item">
                                 <ul class="uk-subnav uk-subnav-small uk-visible@m">

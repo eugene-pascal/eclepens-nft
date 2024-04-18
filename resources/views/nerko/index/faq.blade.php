@@ -8,44 +8,26 @@
         </header>
         <div class="uk-panel uk-margin-medium-top uk-margin-2xlarge-top@m">
             <ul class="uk-card uk-card-small uk-card-large@m uk-radius uk-radius-large@m uk-width-2xlarge@m uk-margin-auto uk-box-shadow-xsmall dark:uk-background-white-5" data-uk-accordion="collapsible: false" data-anime="opacity:[0, 1]; translateY:[24, 0]; onview: true; delay: 100;">
-    <li>
-        <a class="uk-accordion-title uk-h5@m" href="#">What is Nerko's NFT Collection?</a>
-        <div class="uk-accordion-content uk-padding-small-bottom">
-            <p class="uk-text-small uk-text-large@m uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
-            <p class="uk-text-small uk-text-large@m uk-text-muted">Voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
-        </div>
-    </li>
-    <li>
-        <a class="uk-accordion-title uk-h5@m" href="#">How we can buy and invest NFT?</a>
-        <div class="uk-accordion-content uk-padding-small-bottom">
-            <p class="uk-text-small uk-text-large@m uk-text-muted">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
-        </div>
-    </li>
-    <li>
-        <a class="uk-accordion-title uk-h5@m" href="#">Why we should choose Nerko's NFT?</a>
-        <div class="uk-accordion-content uk-padding-small-bottom">
-            <p class="uk-text-small uk-text-large@m uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
-        </div>
-    </li>
-    <li>
-        <a class="uk-accordion-title uk-h5@m" href="#">Where we can buy and sell NFts?</a>
-        <div class="uk-accordion-content uk-padding-small-bottom">
-            <p class="uk-text-small uk-text-large@m uk-text-muted">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
-        </div>
-    </li>
-    <li>
-        <a class="uk-accordion-title uk-h5@m" href="#">How secure is this token?</a>
-        <div class="uk-accordion-content uk-padding-small-bottom">
-            <p class="uk-text-small uk-text-large@m uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
-        </div>
-    </li>
-    <li>
-        <a class="uk-accordion-title uk-h5@m" href="#">What is your contract address?</a>
-        <div class="uk-accordion-content uk-padding-small-bottom">
-            <p class="uk-text-small uk-text-large@m uk-text-muted">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
-        </div>
-    </li>
-</ul>
+                <li>
+                    <a class="uk-accordion-title uk-h5@m" href="#">What are our NFT Collections ?</a>
+                    <div class="uk-accordion-content uk-padding-small-bottom">
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">Our NFT collections are dedicated to our wonderful wines of the '814' series.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">They include red, white, and rosé wines.</p>
+                    </div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title uk-h5@m" href="#">Where could I buy your NFT?</a>
+                    <div class="uk-accordion-content uk-padding-small-bottom">
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">You can purchase our NFTs on the marketplaces like OpenSea on the Ethereum mainnet or choose Tensor.trade on the Solana network.</p>
+                    </div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title uk-h5@m" href="#">Why I should choose your NFT?</a>
+                    <div class="uk-accordion-content uk-padding-small-bottom">
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">Why should you buy our NFT? As the owner, you'll enjoy exclusive perks like receiving a gift wooden box with a limited-edition bottle of wine. With only 255 bottles produced annually for each wine type (red, white, rosé), these are highly coveted. Plus, you'll have the chance to visit our chateau or engage in a video call with François de Coulon, the chateau owner.</p>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

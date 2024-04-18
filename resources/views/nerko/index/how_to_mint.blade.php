@@ -18,7 +18,7 @@
                             </div>
                             <div class="uk-panel uk-width-expand">
                                 <h3 class="uk-h5 uk-h4@m">Connect your wallet</h3>
-                                <p>Use Trust Wallet, Metamask or any wallet to connect to the app.</p>
+                                <p>Use Trust Wallet, Metamask or any wallet to connect to the marketplace. This allows you to interact with the blockchain and create or purchase NFTs. You may need to sign transactions and pay gas fees.</p>
                             </div>
                         </div>
                     </div>
@@ -33,8 +33,8 @@
                                 </div>
                             </div>
                             <div class="uk-panel uk-width-expand">
-                                <h3 class="uk-h5 uk-h4@m">Select your quantity</h3>
-                                <p>Upload your NFTs and set a title, description and price.</p>
+                                <h3 class="uk-h5 uk-h4@m">Select your NFT</h3>
+                                <p>Decide on the specific our NFT you want to mint. This could be any digital item that you want to have the rights to.</p>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                             </div>
                             <div class="uk-panel uk-width-expand">
                                 <h3 class="uk-h5 uk-h4@m">Confirm transaction</h3>
-                                <p>Earn ETH and BIT for all your NFTs that you sell on our marketplace.</p>
+                                <p>Review the details of the minting transaction and confirm it in your wallet. This will initiate the minting process on the blockchain, where a unique token representing your NFT will be created and added to the marketplace.</p>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="uk-panel uk-width-expand">
                                 <h3 class="uk-h5 uk-h4@m">Receive your NFTs</h3>
-                                <p>Latin professor at Hampden-Sydney College in Virginia.</p>
+                                <p>After the transaction is confirmed on the blockchain, you will receive a confirmation message or notification from the marketplace. Your newly minted NFT is now officially part of your collection and can be viewed and traded on the marketplace.</p>
                             </div>
                         </div>
                     </div>

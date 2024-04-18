@@ -194,6 +194,7 @@
 <footer class="uni-footer uk-section uk-section-xlarge@m">
     <div class="uk-container">
         <div class="uk-panel">
+            @if (true)
             <img class="uk-position-top-left" width="32" src="{{ asset('skin/nerko/assets/images/objects/ethereum-01.png') }}" alt="object" style="top: 32%; left: 16%">
             <img class="uk-position-top-right" width="16" src="{{ asset('skin/nerko/assets/images/objects/x.png') }}" alt="object" style="top: 8%; right: 16%">
             <img class="uk-position-bottom-right" width="16" src="{{ asset('skin/nerko/assets/images/objects/circle-01.png') }}" alt="object" style="bottom: 24%; right: 40%">
@@ -204,7 +205,7 @@
                         <a href="landing-01.html" class="uk-logo">
 {{--                            <img width="200" src="{{ asset('skin/nerko/assets/images/nerko.svg') }}" alt="Nerko">--}}
                         </a>
-                        <p class="uk-text-xlarge@m uk-margin-medium-top@m">We make it easy to discover, Invest and manage all your NFTs at one place.</p>
+                        <p class="uk-text-xlarge@m uk-margin-medium-top@m">We make it easy to discover, invest in, and manage our NFTs to reap numerous benefits.</p>
                         <ul class="uk-subnav uk-subnav-small uk-flex-center uk-text-gray-40 uk-margin-top uk-margin-medium-top@m">
                             <li>
                                 <a href="#"><span class="uk-icon uk-icon-medium@m unicon-logo-twitter"></span></a>
@@ -216,20 +217,21 @@
                     </div>
                 </div>
             </div>
+            @endif
             <hr class="uk-margin-medium uk-margin-3xlarge-top@m">
             <div class="uk-panel uk-text-small">
                 <div class="uk-grid uk-child-width-auto@m uk-flex-center uk-flex-between@m uk-text-center uk-text-left@m" data-uk-grid>
-                    <div>
-                        <ul class="uk-subnav uk-subnav-small uk-text-muted uk-flex-center">
-                            <li><a href="privacy.html">Privacy policy</a></li>
-                            <li><a href="terms.html">Terms of use</a></li>
-                            <li class="uk-margin-small-left">
-                                <a href="#" data-uk-totop="" data-uk-scroll><i class="uk-icon uk-icon-small unicon-chevron-up"></i></a>
-                            </li>
-                        </ul>
-                    </div>
+{{--                    <div>--}}
+{{--                        <ul class="uk-subnav uk-subnav-small uk-text-muted uk-flex-center">--}}
+{{--                            <li><a href="#">Privacy policy</a></li>--}}
+{{--                            <li><a href="#">Terms of use</a></li>--}}
+{{--                            <li class="uk-margin-small-left">--}}
+{{--                                <a href="#" data-uk-totop="" data-uk-scroll><i class="uk-icon uk-icon-small unicon-chevron-up"></i></a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
                     <div class="uk-flex-first@m uk-flex-center">
-                        <p class="uk-text-muted">© 2024 Nerko. All rights reserved.</p>
+                        <p class="uk-text-muted">© 2024 CHÂTEAU D’ECLÉPENS. All rights reserved.</p>
                     </div>
                 </div>
             </div>

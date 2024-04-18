@@ -8,7 +8,7 @@
                 <img class="uk-position-top-right" width="40" src="{{ asset('skin/nerko/assets/images/objects/ethereum-02.png') }}" alt="Object" style="top: 0%; right: -16%">
                 <img class="uk-position-bottom-left" width="48" src="{{ asset('skin/nerko/assets/images/objects/bitcoin-01.png') }}" alt="Object" style="bottom: 16%; left: -8%">
                 <h2 class="uk-h3 uk-heading-d1@m">Let's start minting</h2>
-                <a href="#" class="uk-button uk-button-small uk-button-large@m uk-button-gradient uk-margin-small-top uk-margin-large-top@m">Join community</a>
+                <a href="#" class="uk-button uk-button-small uk-button-large@m uk-button-gradient uk-margin-small-top uk-margin-large-top@m">Go to the marketplace</a>
             </div>
         </div>
     </div>

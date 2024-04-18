@@ -2,7 +2,7 @@
     <div class="uk-container">
         <header class="uk-grid-xsmall uk-flex-center uk-flex-middle uk-text-center uk-child-width-auto@m uk-grid" data-uk-grid data-anime="opacity:[0, 1]; translateY:[-24, 0]; onview: true; delay: 200;">
             <div class="uk-panel">
-                <h2 class="uk-h3 uk-h1@m">Latest artworks</h2>
+                <h2 class="uk-h3 uk-h1@m">814 collections</h2>
             </div>
         </header>
         <div class="uk-panel uk-margin-top uk-margin-xlarge-top@m">

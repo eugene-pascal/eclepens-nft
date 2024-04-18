@@ -20,10 +20,14 @@
                                 <img class="uk-position-top-left" width="44" src="{{ asset('skin/nerko/assets/images/objects/ethereum-01.png') }}" alt="object" style="top: -20%; left: 50%" data-anime="opacity:[0, 1]; scale:[0, 1]; onview: true; delay: 400;">
                                 <img class="uk-position-left" width="16" src="{{ asset('skin/nerko/assets/images/objects/circle-01.png') }}" alt="object" style="top: 16%; left: -16%" data-anime="opacity:[0, 1]; scale:[0, 1]; onview: true; delay: 420;">
                                 <img class="uk-position-bottom-left" width="24" src="{{ asset('skin/nerko/assets/images/objects/circle-03.png') }}" alt="object" style="bottom: -16%; left: 16%" data-anime="opacity:[0, 1]; scale:[0, 1]; onview: true; delay: 440;">
-                                <h2 class="uk-h2 uk-heading-d3@m uk-margin-small uk-margin@m">Supercharge your NFT Adventure</h2>
-                                <p class="uk-text-xlarge uk-width-xlarge@m uk-text-muted">Find the right NFT collections to buy within the platform.</p>
+                                <h2 class="uk-h2 uk-heading-d3@m uk-margin-small uk-margin@m">Unique NFT of Eclépens Winery</h2>
+                                <p class="uk-text-xlarge uk-width-xlarge@m uk-text-muted">Discover our NFT collection, ownership of which grants you exclusive benefits</p>
                                 <a href="#" class="uk-button uk-button-medium@m uk-button-gradient uk-margin-small-top">
                                     <span>View in OPENSEA</span>
+                                    <i class="uk-icon-small unicon-arrow-right uk-text-bold"></i>
+                                </a>
+                                <a href="#" class="uk-button uk-button-medium@m uk-button-gradient uk-margin-small-top">
+                                    <span>View in Tensor (Solana)</span>
                                     <i class="uk-icon-small unicon-arrow-right uk-text-bold"></i>
                                 </a>
                             </div>
@@ -72,7 +76,7 @@
     <!-- Hero end -->
 
     <!-- brands start -->
-    @include('nerko.index.brands', [])
+{{--    @include('nerko.index.brands', [])--}}
     <!-- brands end -->
 
     <img class="uk-width-2xsmall uk-flex-center uk-margin-auto uk-margin-medium uk-margin-large@m" src="{{ asset('skin/nerko/assets/images/divider-01.svg') }}" alt="Divider" data-anime="opacity:[0, 1]; scale:[0, 1]; onview: true; delay: 100;">

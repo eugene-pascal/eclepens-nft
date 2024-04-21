@@ -12,7 +12,7 @@
                         <div class="uk-grid uk-grid-3xlarge@m uk-flex-middle uk-child-width-1-2@m" data-uk-grid="">
                             <div>
                                 <div class="uk-panel uk-image-middle uk-overflow-hidden uk-radius uk-radius-large@m" data-anime="opacity:[0, 1]; translateX:[-24, 0]; onview: -250; delay: 200;">
-                                    <img src="{{ asset('skin/nerko/assets/images/765px-214_Louis_Le_Pieux.jpg') }}" alt="Create your own NFT">
+                                    <img src="{{ asset('skin/nerko/assets/images/eclepens814.jpg') }}" alt="Create your own NFT">
                                 </div>
                             </div>
                             <div>
@@ -59,7 +59,7 @@
                                     <p class="uk-text-large@m">
                                         François and Daria, his wife, manage the estate. It is situated on the southern flank of Mormont, highly exposed, in the region known as the "Middle of the World," which delineates the separation between the Rhone basin (Venoge) and that of the Rhine (Nozon). The soils primarily consist of low, stony, and compact moraines. Its philosophy is inspired by the Burgundian tradition, aiming to produce opulent wines characterized by fruitiness and great elegance.
                                     </p>
-{{--                                    <div class="uk-grid uk-grid-large@m uk-grid-match uk-child-width-1-2@m uk-margin-medium-top uk-margin-large-top@m" data-uk-grid="">--}}
+                                    <div class="uk-grid uk-grid-large@m uk-grid-match uk-child-width-1-2@m uk-margin-medium-top uk-margin-large-top@m" data-uk-grid="">
 {{--                                        <div>--}}
 {{--                                            <div class="uk-panel">--}}
 {{--                                                <div class="uk-grid uk-grid-xsmall uk-grid-small@m" data-uk-grid="">--}}
@@ -74,21 +74,21 @@
 {{--                                                </div>--}}
 {{--                                            </div>--}}
 {{--                                        </div>--}}
-{{--                                        <div>--}}
-{{--                                            <div class="uk-panel">--}}
-{{--                                                <div class="uk-grid uk-grid-xsmall uk-grid-small@m" data-uk-grid="">--}}
-{{--                                                    <div>--}}
-{{--                                                        <div class="uk-card uk-card-xsmall uk-radius-medium uk-radius-large@m uk-background-gradient uk-flex-middle uk-flex-center">--}}
-{{--                                                            <i class="uk-icon-small uk-icon-medium@m unicon-select-window uk-text-white"></i>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="uk-width-expand">--}}
-{{--                                                        <span class="uk-text-small@m">Difference in Floor & <br>Estimated Value</span>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                        <div>
+                                            <div class="uk-panel">
+                                                <div class="uk-grid uk-grid-xsmall uk-grid-small@m" data-uk-grid="">
+                                                    <div>
+                                                        <div class="uk-card uk-card-xsmall uk-radius-medium uk-radius-large@m uk-background-gradient uk-flex-middle uk-flex-center">
+                                                            <i class="uk-icon-small uk-icon-medium@m unicon-select-window uk-text-white"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-width-expand">
+                                                        <span class="uk-text-small@m">Click to see our location at <a href=#">Google Map</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

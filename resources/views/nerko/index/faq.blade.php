@@ -18,13 +18,13 @@
                 <li>
                     <a class="uk-accordion-title uk-h5@m" href="#">Where could I buy your NFT?</a>
                     <div class="uk-accordion-content uk-padding-small-bottom">
-                        <p class="uk-text-small uk-text-large@m uk-text-muted">You can purchase our NFTs on the marketplaces like OpenSea on the Ethereum mainnet or choose Tensor.trade on the Solana network.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">You can purchase our NFTs on the marketplaces Tensor.trade on the Solana network.</p>
                     </div>
                 </li>
                 <li>
                     <a class="uk-accordion-title uk-h5@m" href="#">Why I should choose your NFT?</a>
                     <div class="uk-accordion-content uk-padding-small-bottom">
-                        <p class="uk-text-small uk-text-large@m uk-text-muted">Why should you buy our NFT? As the owner, you'll enjoy exclusive perks like receiving a gift wooden box with a limited-edition bottle of wine. With only 255 bottles produced annually for each wine type (red, white, rosé), these are highly coveted. Plus, you'll have the chance to visit our chateau or engage in a video call with François de Coulon, the chateau owner.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">Why should you buy our NFT? As the owner, you'll enjoy exclusive perks like receiving a gift wooden box with a limited-edition bottle of wine. With only 814 bottles produced annually for each wine type (red, white, rosé), these are highly coveted. Plus, you'll have the chance to visit our chateau or engage in a video call with François de Coulon, the chateau owner.</p>
                     </div>
                 </li>
             </ul>

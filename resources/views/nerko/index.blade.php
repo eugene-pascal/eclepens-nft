@@ -23,10 +23,6 @@
                                 <h2 class="uk-h2 uk-heading-d3@m uk-margin-small uk-margin@m">Unique NFT of Eclépens Winery</h2>
                                 <p class="uk-text-xlarge uk-width-xlarge@m uk-text-muted">Discover our NFT collection, ownership of which grants you exclusive benefits</p>
                                 <a href="#" class="uk-button uk-button-medium@m uk-button-gradient uk-margin-small-top">
-                                    <span>View in OPENSEA</span>
-                                    <i class="uk-icon-small unicon-arrow-right uk-text-bold"></i>
-                                </a>
-                                <a href="#" class="uk-button uk-button-medium@m uk-button-gradient uk-margin-small-top">
                                     <span>View in Tensor (Solana)</span>
                                     <i class="uk-icon-small unicon-arrow-right uk-text-bold"></i>
                                 </a>
@@ -55,13 +51,13 @@
                                         @endif
                                     @endforeach
                                 </div>
-                                <a class="uni-circle-text uk-background-white dark:uk-background-gray-80 uk-box-shadow-large uk-visible@m" href="#view_in_opensea">
+                                <a class="uni-circle-text uk-background-white dark:uk-background-gray-80 uk-box-shadow-large uk-visible@m" href="#">
                                     <svg class="uni-circle-text-path uk-text-secondary uni-animation-spin" viewBox="0 0 100 100" width="120" height="120">
                                         <defs>
                                             <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0">
                                         </defs>
                                         <text font-size="11.75">
-                                            <textPath xlink:href="#circle">view in opensea • view in opensea •</textPath>
+                                            <textPath xlink:href="#circle">view NFT in tensor.trade • SOLANA •</textPath>
                                         </text>
                                     </svg>
                                     <i class="uk-position-center uk-text-secondary uk-icon-medium@m unicon-arrow-up-right uk-text-bold"></i>

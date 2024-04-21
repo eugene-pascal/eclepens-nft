@@ -81,6 +81,7 @@
 </div>
 
 <!-- Connect wallet modal -->
+@if (false)
 <div id="uni_connect_wallet" class="uk-modal-full" data-uk-modal>
     <div class="uk-modal-dialog">
         <div class="uk-position-top uk-position-z-index-negative" data-uk-height-viewport="">
@@ -129,6 +130,7 @@
         </div>
     </div>
 </div>
+@endif
 
 <!-- Wrapper start -->
 <div class="wrap">
@@ -156,15 +158,11 @@
                                     <li>
                                         <a href="#"><i class="uk-icon uk-icon-medium unicon-logo-twitter"></i></a>
                                     </li>
-                                    <li>
-                                        <a href="#"><i class="uk-icon uk-icon-medium unicon-logo-discord"></i></a>
-                                    </li>
                                 </ul>
-
-                                <!-- header: call to actions -->
-                                <a href="#uni_connect_wallet" class="uk-button uk-button-medium@m uk-button-default uk-button-outline uk-margin-left uk-visible@l" data-uk-toggle="">
-                                    <span>Connect wallet</span>
-                                </a>
+{{--                                <!-- header: call to actions -->--}}
+{{--                                <a href="#uni_connect_wallet" class="uk-button uk-button-medium@m uk-button-default uk-button-outline uk-margin-left uk-visible@l" data-uk-toggle="">--}}
+{{--                                    <span>Connect wallet</span>--}}
+{{--                                </a>--}}
                             </div>
 
                             <div class="uk-navbar-item uk-hidden@m">
@@ -209,9 +207,6 @@
                         <ul class="uk-subnav uk-subnav-small uk-flex-center uk-text-gray-40 uk-margin-top uk-margin-medium-top@m">
                             <li>
                                 <a href="#"><span class="uk-icon uk-icon-medium@m unicon-logo-twitter"></span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="uk-icon uk-icon-medium@m unicon-logo-discord"></span></a>
                             </li>
                         </ul>
                     </div>

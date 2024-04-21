@@ -31,6 +31,7 @@ class EditRequest extends BaseRequest
             'name' => 'required|max:255',
             'standard' => 'required|max:32',
             'descr' => 'required',
+            'url_to_coll' => 'nullable|string|max:255',
             'max_nft' => 'required|integer|min:10|max:1000',
             'slug' => [
                 'required',

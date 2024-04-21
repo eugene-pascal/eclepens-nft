@@ -9,6 +9,8 @@ php artisan make:migration create_languages_table
 php artisan make:migration create_static_page_localization
 php artisan make:migration UpdateNftAddField --table=nfts
 
+php artisan make:migration UpdateNftAddField --table=nfts
+
 
 
 

@@ -83,6 +83,16 @@
                             @endif
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label" for="header" class="required">{{ __('Url to the collection') }}</label>
+                        <div class="col-10">
+                            <input type="text" class="form-control" name="url_to_coll" value="{{old('url_to_coll', $nft->url_to_coll ?? '')}}" placeholder=""/>
+                            @if($errors->has('url_to_coll'))
+                                <div class="error text-danger font-size-sm">{{ $errors->first('url_to_coll') }}</div>
+                            @endif
+                        </div>
+                    </div>
                     
                     <div class="form-group row">
                         <label class="col-2 col-form-label" for="text">{{  __('Description') }} <i class="text-danger">*</i></label>

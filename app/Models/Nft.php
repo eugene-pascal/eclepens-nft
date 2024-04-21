@@ -27,6 +27,7 @@ class Nft extends Model implements HasMedia
         'author',
         'name',
         'descr',
+        'url_to_coll',
         'display',
         'published_at',
         'max_nft'

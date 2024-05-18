@@ -21,7 +21,7 @@
                                 <img class="uk-position-left" width="16" src="{{ asset('skin/nerko/assets/images/objects/circle-01.png') }}" alt="object" style="top: 16%; left: -16%" data-anime="opacity:[0, 1]; scale:[0, 1]; onview: true; delay: 420;">
                                 <img class="uk-position-bottom-left" width="24" src="{{ asset('skin/nerko/assets/images/objects/circle-03.png') }}" alt="object" style="bottom: -16%; left: 16%" data-anime="opacity:[0, 1]; scale:[0, 1]; onview: true; delay: 440;">
                                 <h2 class="uk-h2 uk-heading-d3@m uk-margin-small uk-margin@m">Unique NFT of Eclépens Winery</h2>
-                                <p class="uk-text-xlarge uk-width-xlarge@m uk-text-muted">Discover our NFT collection, ownership of which grants you exclusive benefits</p>
+                                <p class="uk-text-xlarge uk-width-xlarge@m uk-text-muted">Discover our NFT collections, ownership of which grants you exclusive benefits</p>
                                 <a href="#" class="uk-button uk-button-medium@m uk-button-gradient uk-margin-small-top">
                                     <span>View in Magic Eden</span>
                                     <i class="uk-icon-small unicon-arrow-right uk-text-bold"></i>

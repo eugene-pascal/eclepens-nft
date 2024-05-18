@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" class="uk-background-white dark:uk-background-gray-100 dark:uk-text-gray-20 uk-dark">
+<html lang="zxx" class="uk-background-white dark:uk-background-gray-100 dark:uk-text-gray-20 uk-dark__">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +26,8 @@
     <link rel="preload" href="{{ asset('skin/nerko/assets/js/helpers/swiper-helper.js') }}" as="script">
     <link rel="preload" href="{{ asset('skin/nerko/assets/js/helpers/typed-helper.js') }}" as="script">
     <link rel="preload" href="{{ asset('skin/nerko/assets/js/helpers/anime-helper.js') }}" as="script">
+
+    @livewireStyles
 
     <!-- include styles -->
     <script src="{{ asset('skin/nerko/assets/js/app-head.js') }}"></script>
@@ -69,9 +71,9 @@
                 <div class="uk-card uk-card-small">
                     <div class="uk-panel">
                         <ul class="uk-nav uk-nav-default">
-                            <li class="uk-nav-header"><a href="#uni_minting">Minting</a></li>
-                            <li class="uk-nav-header"><a href="#uni_about">About</a></li>
-                            <li class="uk-nav-header"><a href="#uni_collection">Collection</a></li>
+                            <li class="uk-nav-header"><a href="{{ route('home') }}#uni_minting">Minting</a></li>
+                            <li class="uk-nav-header"><a href="{{ route('home') }}#uni_about">About</a></li>
+                            <li class="uk-nav-header"><a href="{{ route('home') }}#uni_collection">Collection</a></li>
                         </ul>
                     </div>
                 </div>
@@ -136,27 +138,27 @@
 <div class="wrap">
 
     <!-- Header start -->
-    <header class="uni-header uk-position-top">
+    <header class="uni-header {!!(Route::is('home') ? 'uk-position-top' : '' ) !!}">
         <div class="uni-header-navbar" data-uk-sticky="top: 70; show-on-up: false; animation: uk-animation-slide-top" data-anime="opacity:[0, 1]; translateY:[-24, 0]; onview: true; delay: 0;">
             <div class="uk-container">
                 <nav class="uk-navbar uk-navbar-container uk-navbar-transparent" data-uk-navbar>
                     <div class="uk-navbar-top">
                         <div class="uk-navbar-left">
-                            <a class="uk-logo uk-navbar-item uk-h4 uk-h3@m uk-margin-remove" href="landing-01.html">
+                            <a class="uk-logo uk-navbar-item uk-h4 uk-h3@m uk-margin-remove" href="/">
                                 <img class="uk-visible dark:uk-hidden" width="120" src="{{ asset('skin/nerko/assets/images/logo-eclepens-black.png') }}" alt="" loading="lazy">
                                 <img class="uk-hidden dark:uk-visible" width="120" src="{{ asset('skin/nerko/assets/images/logo-eclepens-white.png') }}" alt="" loading="lazy"> </a>
                         </div>
 
                         <div class="uk-navbar-right uk-flex-1 uk-flex-right">
                             <ul class="uk-navbar-nav dark:uk-text-gray-10 uk-visible@m" data-uk-scrollspy-nav="closest: li; scroll: true; offset: 80" data-uk-navbar-bound>
-                                <li><a href="#uni_minting">Minting</a></li>
-                                <li><a href="#uni_about">About</a></li>
-                                <li><a href="#uni_collection">Collection</a></li>
+                                <li><a href="{{ route('home') }}#uni_minting">Minting</a></li>
+                                <li><a href="{{ route('home') }}#uni_about">About</a></li>
+                                <li><a href="{{ route('home') }}#uni_collection">Collection</a></li>
                             </ul>
                             <div class="uk-navbar-item">
                                 <ul class="uk-subnav uk-subnav-small uk-visible@m">
                                     <li>
-                                        <a href="#"><i class="uk-icon uk-icon-medium unicon-logo-twitter"></i></a>
+                                        <a href="https://twitter.com/ChateauEclepens" target="_blank"><i class="uk-icon uk-icon-medium unicon-logo-twitter"></i></a>
                                     </li>
                                 </ul>
 {{--                                <!-- header: call to actions -->--}}
@@ -166,9 +168,9 @@
                             </div>
 
                             <div class="uk-navbar-item uk-hidden@m">
-                                <a href="#uni_connect_wallet" class="uk-button uk-button-medium@m uk-button-icon uk-hidden@m uk-margin-small-right" data-uk-toggle="">
-                                    <i class="uk-icon unicon-wallet"></i>
-                                </a>
+{{--                                <a href="#uni_connect_wallet" class="uk-button uk-button-medium@m uk-button-icon uk-hidden@m uk-margin-small-right" data-uk-toggle="">--}}
+{{--                                    <i class="uk-icon unicon-wallet"></i>--}}
+{{--                                </a>--}}
                                 <a href="#uni_mobile_menu" data-uk-toggle>
                                     <span class="uk-icon uk-icon-medium material-icons">menu</span>
                                 </a>
@@ -192,7 +194,7 @@
 <footer class="uni-footer uk-section uk-section-xlarge@m">
     <div class="uk-container">
         <div class="uk-panel">
-            @if (true)
+            @if (Route::is('home'))
             <img class="uk-position-top-left" width="32" src="{{ asset('skin/nerko/assets/images/objects/ethereum-01.png') }}" alt="object" style="top: 32%; left: 16%">
             <img class="uk-position-top-right" width="16" src="{{ asset('skin/nerko/assets/images/objects/x.png') }}" alt="object" style="top: 8%; right: 16%">
             <img class="uk-position-bottom-right" width="16" src="{{ asset('skin/nerko/assets/images/objects/circle-01.png') }}" alt="object" style="bottom: 24%; right: 40%">
@@ -200,7 +202,7 @@
             <div class="uk-grid uk-flex-center uk-text-center" data-uk-grid>
                 <div class="uk-width-large@m">
                     <div class="uk-panel">
-                        <a href="landing-01.html" class="uk-logo">
+                        <a href="/" class="uk-logo">
 {{--                            <img width="200" src="{{ asset('skin/nerko/assets/images/nerko.svg') }}" alt="Nerko">--}}
                         </a>
                         <p class="uk-text-xlarge@m uk-margin-medium-top@m">We make it easy to discover, invest in, and manage our NFTs to reap numerous benefits.</p>
@@ -216,15 +218,16 @@
             <hr class="uk-margin-medium uk-margin-3xlarge-top@m">
             <div class="uk-panel uk-text-small">
                 <div class="uk-grid uk-child-width-auto@m uk-flex-center uk-flex-between@m uk-text-center uk-text-left@m" data-uk-grid>
-{{--                    <div>--}}
-{{--                        <ul class="uk-subnav uk-subnav-small uk-text-muted uk-flex-center">--}}
-{{--                            <li><a href="#">Privacy policy</a></li>--}}
-{{--                            <li><a href="#">Terms of use</a></li>--}}
-{{--                            <li class="uk-margin-small-left">--}}
-{{--                                <a href="#" data-uk-totop="" data-uk-scroll><i class="uk-icon uk-icon-small unicon-chevron-up"></i></a>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
+                    <div>
+                        <ul class="uk-subnav uk-subnav-small uk-text-muted uk-flex-center">
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
+                            <li><a href="{{ route('inquiry') }}">Check your NFT</a></li>
+                            <li><a href="https://www.chateau-eclepens.ch/" target="_blank">Official site</a></li>
+                            <li class="uk-margin-small-left">
+                                <a href="#" data-uk-totop="" data-uk-scroll><i class="uk-icon uk-icon-small unicon-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="uk-flex-first@m uk-flex-center">
                         <p class="uk-text-muted">© 2024 CHÂTEAU D’ECLÉPENS. All rights reserved.</p>
                     </div>
@@ -262,6 +265,7 @@
         localStorage.setItem("darkMode", "0");
     }
 </script>
+@livewireScripts
 {{-- Includable JS --}}
 @yield('scripts')
 </body>

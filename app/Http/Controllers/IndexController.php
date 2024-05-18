@@ -20,7 +20,7 @@ class IndexController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -32,5 +32,21 @@ class IndexController extends Controller
         $queryOnNft = Nft::active();
 
         return view('nerko.index', compact('queryOnNft'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function inquiryNFT()
+    {
+        return view('nerko.inquiry-nft');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function contact()
+    {
+        return view('nerko.contact');
     }
 }

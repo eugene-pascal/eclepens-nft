@@ -83,7 +83,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="uk-width-expand">
-                                                        <span class="uk-text-small@m">Click to see our location at <a href=#">Google Map</a></span>
+                                                        <span class="uk-text-small@m">Click to see our location at <a href=https://www.google.com/maps/place/Ch%C3%A2teau+d'Ecl%C3%A9pens/@46.653096,6.5220061,17z/data=!4m6!3m5!1s0x478dcb3b46a61d51:0xf70b180d5837beb1!8m2!3d46.653096!4d6.524581!16s%2Fg%2F1w0qztqg?entry=ttu" target="_blank">Google Map</a></span>
                                                     </div>
                                                 </div>
                                             </div>

@@ -30,8 +30,8 @@
                 @endforeach
             </div>
             <div class="uni-btn uk-margin-medium-top uk-margin-2xlarge-top@m uk-flex-center" data-anime="opacity:[0, 1]; translateY:[-24, 0]; onview: true; delay: 200;">
-                <a href="#view_in_opensea" class="uk-button uk-button-small uk-button-large@m uk-button-gradient">
-                    <span>View more in Tensor.trade</span>
+                <a href="#view_in_me" class="uk-button uk-button-small uk-button-large@m uk-button-gradient">
+                    <span>View more in Magic Eden</span>
                     <i class="uk-icon-small unicon-arrow-right uk-text-bold"></i>
                 </a>
             </div>

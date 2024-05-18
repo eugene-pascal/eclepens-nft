@@ -11,20 +11,35 @@
                 <li>
                     <a class="uk-accordion-title uk-h5@m" href="#">What are our NFT Collections ?</a>
                     <div class="uk-accordion-content uk-padding-small-bottom">
-                        <p class="uk-text-small uk-text-large@m uk-text-muted">Our NFT collections are dedicated to our wonderful wines of the '814' series.</p>
-                        <p class="uk-text-small uk-text-large@m uk-text-muted">They include red, white, and rosé wines.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">Our NFT collections celebrate the exceptional wines of our '814' series. Each collection is devoted to a specific type of wine: red, white, and rosé.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">With 271 NFTs for red, 271 NFTs for white, and 272 NFTs for rosé, we offer a total of 814 exclusive NFTs.</p>
                     </div>
                 </li>
                 <li>
                     <a class="uk-accordion-title uk-h5@m" href="#">Where could I buy your NFT?</a>
                     <div class="uk-accordion-content uk-padding-small-bottom">
-                        <p class="uk-text-small uk-text-large@m uk-text-muted">You can purchase our NFTs on the marketplaces Tensor.trade on the Solana network.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">You can purchase our NFTs on the marketplaces MagicEden on the Solana network.</p>
                     </div>
                 </li>
                 <li>
                     <a class="uk-accordion-title uk-h5@m" href="#">Why I should choose your NFT?</a>
                     <div class="uk-accordion-content uk-padding-small-bottom">
-                        <p class="uk-text-small uk-text-large@m uk-text-muted">Why should you buy our NFT? As the owner, you'll enjoy exclusive perks like receiving a gift wooden box with a limited-edition bottle of wine. With only 814 bottles produced annually for each wine type (red, white, rosé), these are highly coveted. Plus, you'll have the chance to visit our chateau or engage in a video call with François de Coulon, the chateau owner.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">As an owner, you'll enjoy exclusive perks, including a gift wooden box containing a limited-edition bottle of wine. With only 814 bottles produced annually for each wine type (red, white, and rosé), these are highly coveted. Additionally, you'll have the opportunity to visit our chateau or engage in a video call with François de Coulon, the esteemed owner of the chateau.</p>
+                    </div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title uk-h5@m" href="#">Which countries can be delivered ?</a>
+                    <div class="uk-accordion-content uk-padding-small-bottom">
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">List of Deliverable Countries:</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">France, Germany, Austria, Belgium, Denmark, Spain, Finland, UK, Greece, Ireland, Italy, Luxembourg, Netherlands, Portugal, Sweden, Iceland, Bulgaria, Croatia, Estonia, Hungary, Latvia, Lithuania, Poland, Romania, Slovakia, Slovenia, Czech Republic, Switzerland, USA, Canada, Hong Kong, Japan, China, South Korea, Singapore, Malaysia, Philippines, South Africa, Mauritius, Australia, and New Zealand.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">Please note that this list is subject to change due to customs regulations or unforeseen events beyond our control. If necessary, NFT holders should contact us to find the most appropriate alternative solution.</p>
+                    </div>
+                </li>
+
+                <li>
+                    <a class="uk-accordion-title uk-h5@m" href="#">How much does the NFT cost?</a>
+                    <div class="uk-accordion-content uk-padding-small-bottom">
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">It costs 1 SOL</p>
                     </div>
                 </li>
             </ul>

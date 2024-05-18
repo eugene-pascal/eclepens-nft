@@ -1,5 +1,5 @@
 @extends('layout.nerko')
-@section('title', __('NFT'))
+@section('title', __('NFT collection 814'))
 @section('content')
     <!-- Hero start -->
     <div id="uni_hero" class="uni-hero uk-section uk-section-xlarge uk-padding-remove-bottom uk-panel">
@@ -23,7 +23,7 @@
                                 <h2 class="uk-h2 uk-heading-d3@m uk-margin-small uk-margin@m">Unique NFT of Eclépens Winery</h2>
                                 <p class="uk-text-xlarge uk-width-xlarge@m uk-text-muted">Discover our NFT collection, ownership of which grants you exclusive benefits</p>
                                 <a href="#" class="uk-button uk-button-medium@m uk-button-gradient uk-margin-small-top">
-                                    <span>View in Tensor (Solana)</span>
+                                    <span>View in the market (Solana)</span>
                                     <i class="uk-icon-small unicon-arrow-right uk-text-bold"></i>
                                 </a>
                             </div>

@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
             'article' => 'App\Models\Article',
             'nft' => 'App\Models\Nft'
         ]);
+
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 
     /**

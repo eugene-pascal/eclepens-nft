@@ -145,8 +145,8 @@
                     <div class="uk-navbar-top">
                         <div class="uk-navbar-left">
                             <a class="uk-logo uk-navbar-item uk-h4 uk-h3@m uk-margin-remove" href="/">
-                                <img class="uk-visible dark:uk-hidden" width="120" src="{{ asset('skin/nerko/assets/images/logo-eclepens-black.png') }}" alt="" loading="lazy">
-                                <img class="uk-hidden dark:uk-visible" width="120" src="{{ asset('skin/nerko/assets/images/logo-eclepens-white.png') }}" alt="" loading="lazy"> </a>
+                                <img class="uk-visible dark:uk-hidden" width="170" src="{{ asset('skin/nerko/assets/images/logo-eclepens-noir.png') }}" alt="" loading="lazy">
+                                <img class="uk-hidden dark:uk-visible" width="170" src="{{ asset('skin/nerko/assets/images/logo-eclepens-blanc.png') }}" alt="" loading="lazy"> </a>
                         </div>
 
                         <div class="uk-navbar-right uk-flex-1 uk-flex-right">

@@ -14,13 +14,13 @@
                                 <div class="uni-artwork-featured-image uk-panel uk-flex-middle uk-flex-center">
                                     <div class="uk-panel uk-image-middle">
                                         <img src="{{$nft->getMedia(\App\Models\Nft::_MEDIA_COLLECTION_NAME)->first()->getUrl('thumb') }}" alt="" class="uk-radius-small uk-radius-medium@m" loading="lazy">
-                                        <a href="#" class="uk-position-cover" aria-label=""></a>
+                                        <a href="https://magiceden.io/marketplace/wine814" target="_blank" class="uk-position-cover" aria-label=""></a>
                                     </div>
                                 </div>
 
                                 <div class="uni-artwork-content uk-panel uk-margin-small-top uk-margin-2xsmall-bottom uk-flex-column uk-flex-middle">
                                     <h2 class="uk-h6 uk-h5@m uk-margin-remove">
-                                        <a class="uk-link-reset" href="#">{{ $nft->name }}</a>
+                                        <a class="uk-link-reset" href="https://magiceden.io/marketplace/wine814" target="_blank">{{ $nft->name }}</a>
                                     </h2>
                                     <span class="uk-text-meta uk-margin-xsmall-top uk-visible@m">By {{ $nft->author }}</span>
                                 </div>
@@ -30,7 +30,7 @@
                 @endforeach
             </div>
             <div class="uni-btn uk-margin-medium-top uk-margin-2xlarge-top@m uk-flex-center" data-anime="opacity:[0, 1]; translateY:[-24, 0]; onview: true; delay: 200;">
-                <a href="#view_in_me" class="uk-button uk-button-small uk-button-large@m uk-button-gradient">
+                <a href="https://magiceden.io/marketplace/wine814" target="_blank" class="uk-button uk-button-small uk-button-large@m uk-button-gradient">
                     <span>View more in Magic Eden</span>
                     <i class="uk-icon-small unicon-arrow-right uk-text-bold"></i>
                 </a>

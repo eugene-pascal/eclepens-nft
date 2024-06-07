@@ -22,7 +22,7 @@
                                 <img class="uk-position-bottom-left" width="24" src="{{ asset('skin/nerko/assets/images/objects/circle-03.png') }}" alt="object" style="bottom: -16%; left: 16%" data-anime="opacity:[0, 1]; scale:[0, 1]; onview: true; delay: 440;">
                                 <h2 class="uk-h2 uk-heading-d3@m uk-margin-small uk-margin@m">Unique NFT of Eclépens Winery</h2>
                                 <p class="uk-text-xlarge uk-width-xlarge@m uk-text-muted">Discover our NFT collections, ownership of which grants you exclusive benefits</p>
-                                <a href="#" class="uk-button uk-button-medium@m uk-button-gradient uk-margin-small-top">
+                                <a href="https://magiceden.io/marketplace/wine814" target="_blank" class="uk-button uk-button-medium@m uk-button-gradient uk-margin-small-top">
                                     <span>View in Magic Eden</span>
                                     <i class="uk-icon-small unicon-arrow-right uk-text-bold"></i>
                                 </a>
@@ -51,7 +51,7 @@
                                         @endif
                                     @endforeach
                                 </div>
-                                <a class="uni-circle-text uk-background-white dark:uk-background-gray-80 uk-box-shadow-large uk-visible@m" href="#">
+                                <a class="uni-circle-text uk-background-white dark:uk-background-gray-80 uk-box-shadow-large uk-visible@m" href="https://magiceden.io/marketplace/wine814" target="_blank">
                                     <svg class="uni-circle-text-path uk-text-secondary uni-animation-spin" viewBox="0 0 100 100" width="120" height="120">
                                         <defs>
                                             <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0">

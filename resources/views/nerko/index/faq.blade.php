@@ -11,8 +11,8 @@
                 <li>
                     <a class="uk-accordion-title uk-h5@m" href="#">What are our NFT Collections ?</a>
                     <div class="uk-accordion-content uk-padding-small-bottom">
-                        <p class="uk-text-small uk-text-large@m uk-text-muted">Our NFT collections celebrate the exceptional wines of our '814' series. Each collection is devoted to a specific type of wine: red, white, and rosé.</p>
-                        <p class="uk-text-small uk-text-large@m uk-text-muted">With 271 NFTs for red, 271 NFTs for white, and 272 NFTs for rosé, we offer a total of 814 exclusive NFTs.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">Our NFT collection celebrate the exceptional wines of our '814' series. Our collection is devoted to a specific type of wine: red, white, and rosé.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">With 1 NFT for red, 1 NFT for white, and 1 NFT for rosé, we offer a total of 3 exclusive NFTs.</p>
                     </div>
                 </li>
                 <li>
@@ -39,7 +39,7 @@
                 <li>
                     <a class="uk-accordion-title uk-h5@m" href="#">How much does the NFT cost?</a>
                     <div class="uk-accordion-content uk-padding-small-bottom">
-                        <p class="uk-text-small uk-text-large@m uk-text-muted">It costs 1 SOL</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">It costs 2 SOL</p>
                     </div>
                 </li>
             </ul>

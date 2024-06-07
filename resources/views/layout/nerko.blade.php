@@ -208,7 +208,7 @@
                         <p class="uk-text-xlarge@m uk-margin-medium-top@m">We make it easy to discover, invest in, and manage our NFTs to reap numerous benefits.</p>
                         <ul class="uk-subnav uk-subnav-small uk-flex-center uk-text-gray-40 uk-margin-top uk-margin-medium-top@m">
                             <li>
-                                <a href="#"><span class="uk-icon uk-icon-medium@m unicon-logo-twitter"></span></a>
+                                <a href="https://x.com/ChateauEclepens"><span class="uk-icon uk-icon-medium@m unicon-logo-twitter"></span></a>
                             </li>
                         </ul>
                     </div>

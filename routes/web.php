@@ -15,6 +15,7 @@ Route::pattern('pattern_alias', '[a-zA-Z0-9\_]+');
 
 Route::get('/', 'IndexController@index')->name('home');
 Route::get('/inquiry', 'IndexController@inquiryNFT')->name('inquiry');
+Route::get('/loyalty-program', 'IndexController@loyaltyProgram')->name('loyalty');
 Route::get('/contact', 'IndexController@contact')->name('contact');
 
 

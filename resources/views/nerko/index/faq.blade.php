@@ -24,7 +24,9 @@
                 <li>
                     <a class="uk-accordion-title uk-h5@m" href="#">Why I should choose your NFT?</a>
                     <div class="uk-accordion-content uk-padding-small-bottom">
-                        <p class="uk-text-small uk-text-large@m uk-text-muted">As an owner, you'll enjoy exclusive perks, including a gift wooden box containing a limited-edition bottle of wine. With only 814 bottles produced annually for each wine type (red, white, and rosé), these are highly coveted. Additionally, you'll have the opportunity to visit our chateau or engage in a video call with François de Coulon, the esteemed owner of the chateau.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">As an owner, you'll enjoy exclusive perks, including a gift wooden box containing a limited-edition bottle of wine. With only 814 bottles produced annually for each wine type (red, white, and rosé), these are highly coveted.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">Additionally, as part of <a class="uk-text-info" href="{{ route('loyalty') }}">our loyalty program</a>, NFT holders can accumulate points for holding their NFTs, which can then be redeemed for additional wines or discounts.</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">Also you'll have the opportunity to visit our chateau or engage in a video call with François de Coulon, the esteemed owner of the chateau.</p>
                     </div>
                 </li>
                 <li>
@@ -39,7 +41,7 @@
                 <li>
                     <a class="uk-accordion-title uk-h5@m" href="#">How much does the NFT cost?</a>
                     <div class="uk-accordion-content uk-padding-small-bottom">
-                        <p class="uk-text-small uk-text-large@m uk-text-muted">It costs 2 SOL</p>
+                        <p class="uk-text-small uk-text-large@m uk-text-muted">It costs <span class="badge-info">3</span> SOL</p>
                     </div>
                 </li>
             </ul>

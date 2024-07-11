@@ -34,8 +34,14 @@ NEED TO BE DONE
 php artisan migrate
 
 php artisan db:seed --class=MemberAccountSummaryAssignUserDateToStartDateField
-
+F
 
 =====
 
  php artisan queue:work --queue=emails
+
+
+   - Removing maxmind/web-service-common (v0.9.0)
+   - Removing maxmind-db/reader (v1.11.0)
+   - Removing geoip2/geoip2 (v2.13.0)
+   - Removing composer/ca-bundle (1.3.5)

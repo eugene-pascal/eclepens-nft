@@ -49,4 +49,12 @@ class IndexController extends Controller
     {
         return view('nerko.contact');
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function loyaltyProgram()
+    {
+        return view('nerko.loyalty');
+    }
 }

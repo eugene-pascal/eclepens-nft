@@ -63,6 +63,11 @@
                                         <p class="uk-text-large@m uk-text-danger">
                                             TGAiJAHJAvdTKH4K5Az5EpkvMaJ7QhNi3s
                                         </p>
+
+                                        <a href="https://sunpump.meme/token/TGAiJAHJAvdTKH4K5Az5EpkvMaJ7QhNi3s" target="_blank" class="uk-button uk-button-medium@m uk-button-gradient uk-margin-small-top">
+                                            <span>Buy token at SunPump</span>
+                                            <i class="uk-icon-small unicon-arrow-right uk-text-bold"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

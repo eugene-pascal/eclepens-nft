@@ -17,6 +17,7 @@ Route::get('/', 'IndexController@index')->name('home');
 Route::get('/inquiry', 'IndexController@inquiryNFT')->name('inquiry');
 Route::get('/loyalty-program', 'IndexController@loyaltyProgram')->name('loyalty');
 Route::get('/contact', 'IndexController@contact')->name('contact');
+Route::get('/meme-trx', 'MemeCoinController@pageTRX')->name('meme-trx');
 
 
 Route::group(['middleware' => 'guest'], function() {

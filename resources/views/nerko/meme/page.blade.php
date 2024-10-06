@@ -60,7 +60,8 @@
                                             1.000.000.000
                                         </p>
                                         <h3 class="uk-h4 uk-h4@m">CONTRACT ADDRESS</h3>
-                                        <p class="uk-text-large@m">
+                                        <p class="uk-text-large@m uk-text-danger">
+                                            TGAiJAHJAvdTKH4K5Az5EpkvMaJ7QhNi3s
                                         </p>
                                     </div>
                                 </div>
